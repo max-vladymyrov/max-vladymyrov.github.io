@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<link rev="made" href="mailto:mvladymyrov at ucmerced dot edu">
+    <link rel="stylesheet" type="text/css" href="html-style.css">
+    <meta name="author" content="Max Vladymyrov">
+    <meta name="copyright" content="&copy; 2012 Max Vladymyrov">
+    <meta http-equiv="Content-language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="description" content="Supplementary material for Partial-Hessian Strategies for Fast Learning of Nonlinear Embeddings">
+    <meta name="keywords" content="icml, icml 2012, Hessian, optimization, SNE, t-SNE, EE">
+    <meta name="robots" content="all">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Supplementary material for ICML'2012</title>
+</head>
+<body>
+
+	<H2>Supplementary material for "Partial-Hessian Strategies for Fast Learning of Nonlinear Embeddings"</H2>
+	<ul>
+	<li><p><a href="supplementary.pdf">supplementary.pdf</a>: a convergence rate derivation.</p></li>
+
+	<li><p> <a href="ee_COIL_multiple_runs.gif">ee_COIL_multiple_runs.gif</a>: GIF animation of 50 runs of the EE algorithm
+	  with 10 manifolds from the COIL-20 data set (N=720) initialized randomly
+	  close to 0. The affinities are constructed with a perplexity of 20. The
+	  animation shows the decrease of the objective function vs the number of
+	  iterations with time. Our preferred method (SD) is able to decrease
+	  the objective function to the lowest value among all methods. In
+	  addition, the method is able to take far more iterations than methods
+	  that have to solve a linear system (SD-).</p></li>
+
+	<li><p><a href="ssne_COIL_multiple_runs.gif">ssne_COIL_multiple_runs.gif</a>: as ee_COIL_multiple_runs.gif but for s-SNE.</p></li>
+
+	<li><p><a href="ee_homotopy.gif">ee_homotopy.gif</a>: GIF animation of the homotopy optimization for the EE
+	  method with 10 manifolds from the COIL-20 data set (N=720). Most of the
+	  methods converge to the same embedding. However, the runtime required to
+	  achieve that result is dramatically different depending on each method. 
+	  Again, SD works very well.</p></li>
+
+	<li><p><a href="ee_MNIST.gif">ee_MNIST.gif</a>: GIF animation of the EE run on the subset of MNIST data set
+	  with N=20000 random images of digits from 0 to 9. The runtime is limited 
+	  to 60 minutes for all the methods. The spectral direction (SD) is the only 
+	  method that is able to produce a reasonable embedding that separates most 
+	  of the digits already after 15 minutes of runtime.</p></li>
+
+	<li><p><a href="tsne_MNIST.gif">tsne_MNIST.gif</a>: as ee_MNIST.gif but for t-SNE.</p></li></ul>
+	You can also <a href="supplementary.zip">download everything</a> in a single zip archive.<br>
+	All the animations may be seen with a web browser or with specialized
+	GIF image viewers.
+	<br><br>
+
+<a href="../../">Back to the home page</a>
+</body>
+</html>

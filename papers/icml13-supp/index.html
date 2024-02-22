@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<link rev="made" href="mailto:mvladymyrov at ucmerced dot edu">
+    <link rel="stylesheet" type="text/css" href="html-style.css">
+    <meta name="author" content="Max Vladymyrov">
+    <meta name="copyright" content="&copy; 2012 Max Vladymyrov">
+    <meta http-equiv="Content-language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="description" content="Supplementary material for Entropic Affinities: Properties and Efficient Numerical Computation">
+    <meta name="keywords" content="icml, icml 2013, affinities, optimization, perplexity">
+    <meta name="robots" content="all">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Supplementary material for ICML'2013</title>
+</head>
+<body>
+
+	<H2>Supplementary material for "Entropic Affinities: Properties and Efficient Numerical Computation"</H2>
+	<ul>
+	<li><p><a href="icml13-proofs.pdf">icml13-proofs.pdf</a>: derivation of Theorem 1.1 from the paper.</p></li>
+
+	<li><p> <a href="Newton.gif">Newton.gif</a>, <a href="Euler.gif">Euler.gif</a>, <a href="Halley.gif">Halley.gif</a>: GIF animation of the root-finding
+  algorithms for one of the points in the Lena image dataset. The type of
+  the step (normal step, bisection, etc.) is shown as a title. The
+  perplexity is set to 30 (shown as black curve), 250 closest neighbors
+  are preserved in the computation of the entropy (shown in red). The
+  initial bounds are set in the interval [-8 3]. beta is computed to an
+  accuracy of 1e-10. The initial value is log(beta) = -6.5. Notice that
+  Newton's method requires one more iteration in the area of the solution
+  to achieve the desired tolerance.</p></li>
+
+		<li><p> <a href="Newton_bad_init.gif">Newton_bad_init.gif</a>, <a href="Euler_bad_init.gif">Euler_bad_init.gif</a>, <a href="Halley_bad_init.gif">Halley_bad_init.gif</a>: same setup
+  as above, except in this case the initialization is located in a flat
+  region. Notice very conservative steps of Halley's method, and
+  enormously long initial steps of Newton's and Euler's method.</p></li>
+</ul>
+	You can also <a href="supplementary.zip">download everything</a> in a single zip archive.<br>
+	All the animations may be seen with a web browser or with specialized
+	GIF image viewers.
+	<br><br>
+
+<a href="../../">Back to the home page</a>
+</body>
+</html>

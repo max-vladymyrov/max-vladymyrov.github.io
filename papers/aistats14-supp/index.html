@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<link rev="made" href="mailto:mvladymyrov at ucmerced dot edu">
+    <link rel="stylesheet" type="text/css" href="html-style.css">
+    <meta name="author" content="Max Vladymyrov">
+    <meta name="copyright" content="&copy; 2012 Max Vladymyrov">
+    <meta http-equiv="Content-language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="description" content="Supplementary material for Linear-time training of nonlinear low-dimensional embeddings">
+    <meta name="keywords" content="aistats, aistats 2014, optimization, N-Body, fast mulipole method, Barnes-Hut">
+    <meta name="robots" content="all">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Supplementary material for AISTATS'2014</title>
+</head>
+<body>
+
+	<H2>Supplementary material for "Linear-Time Training of Nonlinear Low-Dimensional Embeddings", AISTATS'14</H2>
+	<ul>
+	<li><p><a href="aistats14b-supp.pdf">aistats14b-supp.pdf</a>: 	formulae and error bounds for the Fast Gauss Transform (FGT) approximation; an extended discussion of the noise model, including a proof of theorem 3.1 from the paper; and additional experiments' figures.</p></li>
+	
+    <li>The following are GIF animations of the elastic embedding algorithm (EE) ran on the infiniteMNIST dataset with <i>N</i>=1020000 images of handwritten digits, using as optimization one of GD (gradient descent), FP (fixed-point iteration) and L-BFGS, where the objective function gradient is approximated using the Fast Gauss Transform (FGT) or the Barnes-Hut (BH) method.</li>
+	<ul>
+		<li><p> <a href="MNIST.gif">MNIST.gif</a>: all methods shown at once. For each plot, the runtime grows from 0 to 660 minutes with a step of 10 min.</p></li>
+		<li><p> <a href="GD_FGT.gif">GD_FGT.gif</a>, <a href="FP_FGT.gif">FP_FGT.gif</a>, <a href="LBFGS_FGT.gif">LBFGS_FGT.gif</a>, <a href="GD_BH.gif">GD_BH.gif</a>, <a href="FP_BH.gif">FP_BH.gif</a>, <a href="LBFGS_BH.gif">LBFGS_BH.gif</a>:  each method separately. The runtime is limited to 11 hours for all the methods.</p></li>
+		<li><p> <a href="infiniteMNIST_digits.mov">infiniteMNIST_digits.mov</a>, <a href="infiniteMNIST_markers.mov">infiniteMNIST_markers.mov</a>: FGT run with L-BFGS optimization for 13 hours. The first animation shows a subset of 2000 digits shown as actual digits and the second shows all 102000 digits as color markers</p></li>		
+    </ul></ul>
+	You can also <a href="supplementary.zip">download everything</a> in a single zip archive.<br>
+	All the animations may be seen with a web browser or with specialized GIF image viewers.
+	<br><br>
+
+<a href="../../">Back to the home page</a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+a:Link {
+	color: #0000ff;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+a:Visited {
+	color: #660099;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+a:Hover {
+	color: #660099;
+	text-decoration: underline;
+	background-color: transparent;
+}
+
+a:Active {
+	color: #ff0000;
+	background-color: transparent;
+}
+
+counter_145302 {
+        font-family: "Verdana"; 
+        font-size: 11px; 
+        clear: left; 
+        color: #BBBBBB;
+}
+
+a:counter_145302 {
+        color: #BBBBBB;
+}
+
+counter_div_145302 { 
+         height: 7px
+}
