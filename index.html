@@ -31,6 +31,9 @@
     }
     </script>	
     <style>
+		html {
+		    scroll-behavior: smooth;
+		}
         body {
             font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
@@ -39,27 +42,29 @@
             margin: 0 auto;
             padding: 20px;
         }
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        .header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 2rem;
-        }
-        .header-text h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-        .header-text p {
-            margin: 0.5rem 0;
-            font-size: 1.1rem;
-            color: #7f8c8d;
-        }
+		.header {
+		    display: flex;
+		    align-items: center;
+		    padding: 20px;
+		    background-color: #f9f9f9;
+		    border-radius: 10px;
+		    margin-bottom: 30px;
+		}
+		.header img {
+		    width: 150px;
+		    height: 150px;
+		    border-radius: 50%;
+		    margin-right: 30px;
+		}
+
+		.header-text h1 {
+		    margin: 0 0 10px 0;
+		    color: #2c3e50;
+		}
+		.header-text p {
+		    margin: 0;
+		    color: #7f8c8d;
+		}
         .social-icons a {
             color: #3498db;
             font-size: 1.5rem;
@@ -83,20 +88,24 @@
 	    .publications {
 	        margin-bottom: 2rem;
 	    }
-	    .filter-btn {
-	        background-color: #f1f1f1;
-	        border: none;
-	        padding: 0.5rem 1rem;
-	        margin-right: 0.5rem;
-	        cursor: pointer;
-	    }
+		.filter-btn {
+		    padding: 8px 16px;
+		    border: none;
+		    border-radius: 20px;
+		    background-color: #f0f0f0;
+		    color: #333;
+		    cursor: pointer;
+		    transition: all 0.3s ease;
+		    margin-right: 10px;
+		    margin-bottom: 10px;
+		}
 		.filter-button {
 		  padding: 8px 16px;
 		  border: 1px solid #ccc;
 		  border-radius: 20px;
 		  background-color: #f0f0f0;
 		  cursor: pointer;
-		  transition: background-color 0.3s;
+		  transition: background-color 0.3s;All Years
 		}
 		.filter-buttons {
 		  display: flex;
@@ -104,12 +113,13 @@
 		  gap: 10px;
 		  margin-bottom: 20px;
 		}
-		.filter-button:hover {
-		  background-color: #e0e0e0;
+		.filter-btn:hover {
+		    background-color: #e0e0e0;
 		}
-		.filter-button.active {
-		  background-color: #007bff;
-		  color: white;
+
+		.filter-btn.active {
+		    background-color: #3498db;
+		    color: white;
 		}
 		.year-buttons, .topic-buttons, .venue-buttons {
 		  display: flex;
@@ -156,15 +166,18 @@
 		    flex-wrap: wrap;
 		    gap: 10px;
 		}
-
 		.pub-link {
-		    color: #3498db;
+		    padding: 5px 10px;
+		    background-color: #f0f0f0;
+		    border-radius: 15px;
+		    font-size: 0.9em;
 		    text-decoration: none;
-		    display: inline-flex;
-		    align-items: center;
-		    white-space: nowrap;
+		    color: #333;
+		    transition: background-color 0.3s ease;
 		}
-
+		.pub-link:hover {
+		    background-color: #e0e0e0;
+		}
 		.pub-link i {
 		    margin-right: 4px;
 		}
@@ -362,7 +375,7 @@
 		<section class="publications">
 		    <h2>Publications</h2>
 <div class="publication-filters">
-    <div class="filter-group">
+    <!-- <div class="filter-group">
         <h4>Year</h4>
         <div class="button-row">
             <button class="filter-btn active" data-filter="all-years">All Years</button>
@@ -378,7 +391,7 @@
             <button class="filter-btn" data-filter="2013">2013</button>
             <button class="filter-btn" data-filter="2012">2012</button>
         </div>
-    </div>
+    </div> -->
     
     <div class="filter-group">
         <h4>Topic</h4>
