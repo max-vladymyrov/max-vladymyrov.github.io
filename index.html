@@ -363,7 +363,7 @@
             At Google DeepMind, I focus on developing novel machine learning architectures to advance in-context learning and mechanistic interpretability. My goal is to create efficient, interpretable architectures that enhance AI adaptability and trustworthiness.
         </p>
         <p>
-            Prior to joining DeepMind, I spent two years at Yahoo Labs. I completed my PhD at <a href="http://eecs.ucmerced.edu/">UC Merced</a> under the supervision of <a href="http://faculty.ucmerced.edu/mcarreira-perpinan/"> Miguel Á. Carreira-Perpiñán</a>, focusing on large-scale dimensionality reduction problems. I hold two master's degrees in Computer Science and International Economic Relations, and a bachelor's degree in Applied Mathematics, all from <a href="http://www.univer.kharkov.ua/en"> Kharkiv National University</a> in Ukraine.
+            Prior to joining DeepMind, I spent two years at Yahoo Labs. I completed my PhD at <a href="http://eecs.ucmerced.edu/">UC Merced</a>, focusing on large-scale dimensionality reduction problems. I hold two master's degrees in Computer Science and International Economic Relations, and a bachelor's degree in Applied Mathematics, all from <a href="http://www.univer.kharkov.ua/en"> Kharkiv National University</a> in Ukraine.
         </p>
         <!-- <a href="#" class="cta-button">Download CV</a> -->
     </section>
@@ -376,62 +376,29 @@
     <section class="publications">
 		<section class="publications">
 		    <h2>Publications</h2>
-<div class="publication-filters">
-    <!-- <div class="filter-group">
-        <h4>Year</h4>
-        <div class="button-row">
-            <button class="filter-btn active" data-filter="all-years">All Years</button>
-            <button class="filter-btn" data-filter="2024">2024</button>
-            <button class="filter-btn" data-filter="2023">2023</button>
-            <button class="filter-btn" data-filter="2022">2022</button>
-            <button class="filter-btn" data-filter="2021">2021</button>
-            <button class="filter-btn" data-filter="2019">2019</button>
-            <button class="filter-btn" data-filter="2017">2017</button>
-            <button class="filter-btn" data-filter="2016">2016</button>
-            <button class="filter-btn" data-filter="2015">2015</button>
-            <button class="filter-btn" data-filter="2014">2014</button>
-            <button class="filter-btn" data-filter="2013">2013</button>
-            <button class="filter-btn" data-filter="2012">2012</button>
+        <div class="publication-filters">
+            <div class="filter-group">
+                <h4>Topic</h4>
+                <div class="button-row" id="topic-buttons"></div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Venue</h4>
+                <div class="button-row" id="venue-buttons"></div>
+            </div>
         </div>
-    </div> -->
-    
-    <div class="filter-group">
-        <h4>Topic</h4>
-        <div class="button-row">
-        	<button class="filter-btn active" data-filter="all-topics">All Topics</button>
-            	<button class="filter-btn" data-filter="tag-in-context-learning">In-context learning</button>
-		<button class="filter-btn" data-filter="tag-mechanistic-interpretability">mechanistic-interpretability</button>
-		<button class="filter-btn" data-filter="tag-algorithm-discovery">algorithm-discovery</button>
-		<button class="filter-btn" data-filter="tag-few-shot-learning">few-shot-learning</button>
-		<button class="filter-btn" data-filter="tag-hypernetworks">hypernetworks</button>
-		<button class="filter-btn" data-filter="tag-nonlinear-optimization">nonlinear-optimization</button>
-		<button class="filter-btn" data-filter="tag-model-adaptation">model-adaptation</button>
-		<button class="filter-btn" data-filter="tag-learning-to-learn">learning-to-learn</button>
-		<button class="filter-btn" data-filter="tag-meta-learning">meta-learning</button>
-            	<button class="filter-btn" data-filter="tag-manifold-learning">manifold-learning</button>
-        </div>
-    </div>
-    
-    <div class="filter-group">
-        <h4>Venue</h4>
-        <div class="button-row">
-            <button class="filter-btn active" data-filter="all-venues">All Venues</button>
-            <button class="filter-btn" data-filter="venue-icml">ICML</button>
-            <button class="filter-btn" data-filter="venue-neurips">NeurIPS</button>
-            <button class="filter-btn" data-filter="venue-cvpr">CVPR</button>
-            <button class="filter-btn" data-filter="venue-iclr">ICLR</button>
-            <button class="filter-btn" data-filter="venue-aistats">AISTATS</button>
-            <button class="filter-btn" data-filter="venue-ecml-pkdd">ECML-PKDD</button>
-            <button class="filter-btn" data-filter="venue-ijcnn">IJCNN</button>
-            <button class="filter-btn" data-filter="venue-tmlr">TMLR</button>
-	    <button class="filter-btn" data-filter="venue-tmlr">JMLR</button>
-            <button class="filter-btn" data-filter="venue-preprint">Preprint</button>
-<!--             <button class="filter-btn" data-filter="venue-thesis">Thesis</button> -->
-        </div>
-    </div>
-</div>
 <div class="publication-grid">
-    <div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+    <div class="publication-card" data-year="2024" data-tags="learning-to-learn,meta-optimization,meta-learning">
+        <div class="venue-tag">ICML Workshop</div>
+        <h3>Narrowing the Focus: Learned Optimizers for Pretrained Models</h3>
+        <p class="authors">Gus Kristiansen, Mark Sandler, Andrey Zhmoginov, Nolan Miller, Anirudh Goyal, Jihwan Lee, Max Vladymyrov</p>
+        <p class="venue">arXiv:2309.05858</p>
+	<div class="publication-links">
+	    <a href="https://arxiv.org/abs/2309.05858" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+	</div>
+	<div class="tags"></div>
+    </div>	
+    <div class="publication-card" data-year="2024" data-tags="language-models,mechanistic-interpretability,hallucinations">
         <div class="venue-tag">ICML Workshop</div>
         <h3>Learning and Unlearning of Fabricated Knowledge in Language Models</h3>
         <p class="authors">Chen Sun, Nolan Miller, Andrey Zhmoginov, Max Vladymyrov, Mark Sandler</p>
@@ -439,13 +406,9 @@
         <div class="publication-links">
             <a href="https://openreview.net/forum?id=R5Q5lANcjY" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
         </div>
-        <div class="tags">
-            <span class="tag">in-context-learning</span>
-            <span class="tag">mechanistic-interpretability</span>
-            <span class="tag">algorithm-discovery</span>
-        </div>
+	<div class="tags"></div>
     </div>
-<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery,mesa-optimization">
     <div class="venue-tag">ICML Workshop</div>
     <h3>Efficient Linear System Solver with Transformers</h3>
     <p class="authors">Max Vladymyrov, Johannes von Oswald, Nolan Miller, Mark Sandler</p>
@@ -454,14 +417,10 @@
         <a href="https://openreview.net/forum?id=qc2adlhAWF" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
 	    <a href="papers/linsys-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
     </div>			
-    <div class="tags">
-        <span class="tag">in-context-learning</span>
-        <span class="tag">mechanistic-interpretability</span>
-        <span class="tag">algorithm-discovery</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
-<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery,mesa-optimization">
     <div class="venue-tag">ICML Workshop</div>
     <h3>Linear Transformers Are Versatile In-Context Learners</h3> 
     <p class="authors">Max Vladymyrov, Johannes von Oswald, Mark Sandler, Rong Ge</p>
@@ -471,14 +430,10 @@
         <a href="https://openreview.net/forum?id=MWV9zfgW9s" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
 	<a href="papers/icl-versatile.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
     </div>			
-    <div class="tags">
-        <span class="tag">in-context-learning</span>
-        <span class="tag">mechanistic-interpretability</span>
-        <span class="tag">algorithm-discovery</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
-<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+<div class="publication-card" data-year="2024" data-tags="in-context-learning,task-specialization">
     <div class="venue-tag">ICML Workshop</div>
     <h3>Learning Fast and Slow: Representations for In-Context Weight Modulation</h3> 
     <p class="authors">Andrey Zhmoginov, Jihwan Lee, Max Vladymyrov, Mark Sandler</p>
@@ -486,14 +441,10 @@
     <div class="publication-links">
         <a href="https://openreview.net/forum?id=XDzS9lCfQc" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
     </div>			
-    <div class="tags">
-        <span class="tag">in-context-learning</span>
-        <span class="tag">mechanistic-interpretability</span>
-        <span class="tag">algorithm-discovery</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
-<div class="publication-card" data-year="2024" data-tags="few-shot-learning,hypernetworks">
+<div class="publication-card" data-year="2024" data-tags="few-shot-learning,hypernetworks,task-specialization">
     <div class="venue-tag">TMLR</div>
     <h3>Continual HyperTransformer: A Meta-Learner for Continual Few-Shot Learning</h3> 
     <p class="authors">Max Vladymyrov, Andrey Zhmoginov, Mark Sandler</p>
@@ -503,13 +454,10 @@
         <a href="https://openreview.net/forum?id=zdtSqZnkx1" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
 	<a href="papers/cht_poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
     </div>
-    <div class="tags">
-        <span class="tag">few-shot-learning</span>
-        <span class="tag">hypernetworks</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
-<div class="publication-card" data-year="2023" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+<div class="publication-card" data-year="2023" data-tags="in-context-learning,mechanistic-interpretability,mesa-optimization">
     <div class="venue-tag">Preprint</div>
     <h3>Uncovering Mesa-Optimization Algorithms in Transformers</h3> 
     <p class="authors">Johannes von Oswald, Eyvind Niklasson, Maximilian Schlegel, Seijin Kobayashi, Nicolas Zucchet, Nino Scherrer, Nolan Miller, Mark Sandler, Max Vladymyrov, Razvan Pascanu, João Sacramento</p>
@@ -517,11 +465,7 @@
     <div class="publication-links">
         <a href="https://arxiv.org/abs/2309.05858" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
     </div>
-    <div class="tags">
-        <span class="tag">in-context-learning</span>
-        <span class="tag">mechanistic-interpretability</span>
-        <span class="tag">algorithm-discovery</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2023" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
@@ -533,11 +477,7 @@
         <a href="https://arxiv.org/abs/2212.07677" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
         <a href="papers/icl-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
     </div>
-    <div class="tags">
-        <span class="tag">in-context-learning</span>
-        <span class="tag">mechanistic-interpretability</span>
-        <span class="tag">algorithm-discovery</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2023" data-tags="nonlinear-optimization,model-adaptation">
@@ -548,10 +488,7 @@
     <div class="publication-links">
         <a href="https://arxiv.org/abs/2301.02312" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
     </div>
-    <div class="tags">
-        <span class="tag">nonlinear-optimization</span>
-        <span class="tag">model-adaptation</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2023" data-tags="meta-learning,learning-to-learn">
@@ -563,13 +500,10 @@
         <a href="https://arxiv.org/abs/2211.15774" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
 	<a href="papers/cvpr23-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
     </div>
-    <div class="tags">
-        <span class="tag">meta-learning</span>
-        <span class="tag">learning-to-learn</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
-<div class="publication-card" data-year="2022" data-tags="few-shot-learning,hypernetworks">
+<div class="publication-card" data-year="2022" data-tags="few-shot-learning,hypernetworks,task-specialization">
     <div class="venue-tag">ICML</div>			
     <h3>HyperTransformer: Model Generation for Supervised and Semi-Supervised Few-Shot Learning</h3> 
     <p class="authors">Andrey Zhmoginov, Mark Sandler, Max Vladymyrov</p>
@@ -580,10 +514,7 @@
 	<a href="https://www.youtube.com/watch?v=D6osiiEoV0w" class="pub-link"><i class="fas fa-video"></i> Video</a>
 	
     </div>
-    <div class="tags">
-        <span class="tag">few-shot-learning</span>
-        <span class="tag">hypernetworks</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2022" data-tags="nonlinear-optimization,model-adaptation">
@@ -595,10 +526,7 @@
         <a href="https://arxiv.org/abs/2201.05125" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
         <a href="papers/gradmax-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
     </div>
-    <div class="tags">
-        <span class="tag">nonlinear-optimization</span>
-        <span class="tag">model-adaptation</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2022" data-tags="nonlinear-optimization,model-adaptation">
@@ -610,10 +538,7 @@
         <a href="https://arxiv.org/abs/2203.15243" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
         <a href="papers/memory-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
     </div>
-    <div class="tags">
-        <span class="tag">nonlinear-optimization</span>
-        <span class="tag">model-adaptation</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2022" data-tags="model-adaptation,generalization">
@@ -625,13 +550,10 @@
         <a href="https://arxiv.org/abs/2011.03395" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
 	<a href="https://www.youtube.com/watch?v=gch94ttuy5s" class="pub-link"><i class="fas fa-video"></i> Video</a>
     </div>
-    <div class="tags">
-        <span class="tag">model-adaptation</span>
-	<span class="tag">generalization</span>
-    </div>
+	<div class="tags"></div>
 </div>	
 
-<div class="publication-card" data-year="2021" data-tags="meta-learning,learning-to-learn">
+<div class="publication-card" data-year="2021" data-tags="meta-learning,learning-to-learn,meta-optimization">
     <div class="venue-tag">ICML</div>			
     <h3>Meta-Learning Bidirectional Update Rules</h3> 
     <p class="authors">Mark Sandler, Max Vladymyrov, Andrey Zhmoginov, Nolan Miller, Andrew Jackson, Tom Madams, Blaise Agüera y Arcas</p>
@@ -642,10 +564,7 @@
         <a href="papers/BLUR_ICML_presentation.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
         <a href="https://github.com/google-research/google-research/tree/master/blur" class="pub-link"><i class="fab fa-github"></i> GitHub</a>
     </div>
-    <div class="tags">
-        <span class="tag">meta-learning</span>
-        <span class="tag">learning-to-learn</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2019" data-tags="manifold-learning">
@@ -659,9 +578,7 @@
         <a href="pp_slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
         <a href="pp_code.zip" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 
@@ -676,9 +593,7 @@
         <a href="papers/ijcnn17.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Paper</a>
         <a href="papers/ijcnn17-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2016" data-tags="manifold-learning">
@@ -695,9 +610,7 @@
         <a href="papers/icml16-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
         <a href="vn.tar.gz" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2015" data-tags="manifold-learning">
@@ -713,9 +626,7 @@
         <a href="papers/nips15-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
         <a href="pe_mac.zip" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2014" data-tags="manifold-learning">
@@ -730,9 +641,7 @@
         <a href="papers/aistats14-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
         <a href="NBody_NLE.tar.gz" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2013" data-tags="manifold-learning">
@@ -747,9 +656,7 @@
         <a href="papers/ecml13-slides.pdf" class="pub-link"><i class="fas fas fa-file-powerpoint"></i> Slides</a>
         <a href="LLL.tar.gz" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2013" data-tags="manifold-learning">
@@ -765,9 +672,7 @@
         <a href="papers/icml13-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
         <a href="ea.tar.gz" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 <div class="publication-card" data-year="2012" data-tags="manifold-learning">
@@ -783,9 +688,7 @@
         <a href="papers/icml12-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
         <a href="code-EE_SNE_tSNE.tar.gz" class="pub-link"><i class="fas fa-file-archive"></i> Matlab Code</a>
     </div>
-    <div class="tags">
-        <span class="tag">manifold-learning</span>
-    </div>
+	<div class="tags"></div>
 </div>
 
 </section>
@@ -800,8 +703,31 @@
     <script>
         // JavaScript for interactive elements
 		document.addEventListener('DOMContentLoaded', function() {
+            const publicationCards = document.querySelectorAll('.publication-card');
+            const topicButtonsContainer = document.getElementById('topic-buttons');
+            const venueButtonsContainer = document.getElementById('venue-buttons');
 		    const filterBtns = document.querySelectorAll('.filter-btn');
-		    const publicationCards = document.querySelectorAll('.publication-card');
+
+            // Collect unique topics and venues
+            let uniqueTopics = new Set();
+            let uniqueVenues = new Set();
+            publicationCards.forEach(card => {
+                const tags = card.getAttribute('data-tags').split(',');
+                tags.forEach(tag => uniqueTopics.add(tag.trim()));
+                uniqueVenues.add(card.querySelector('.venue-tag').textContent.trim());
+            });
+
+            // Create filter buttons for topics
+            createFilterButton('all-topics', 'All Topics', topicButtonsContainer);
+            uniqueTopics.forEach(topic => {
+                createFilterButton(`tag-${topic}`, topic, topicButtonsContainer);
+            });
+
+            // Create filter buttons for venues
+            createFilterButton('all-venues', 'All Venues', venueButtonsContainer);
+            uniqueVenues.forEach(venue => {
+                createFilterButton(`venue-${venue}`, venue, venueButtonsContainer);
+            });
 
 		    filterBtns.forEach(btn => {
 		        btn.addEventListener('click', () => {
@@ -836,6 +762,18 @@
 		            }
 		        });
 		    });
+			
+            publicationCards.forEach(card => {
+                const tagsContainer = card.querySelector('.tags');
+                const tags = card.getAttribute('data-tags').split(',');
+                tags.forEach(tag => {
+                    const tagSpan = document.createElement('span');
+                    tagSpan.classList.add('tag');
+                    tagSpan.textContent = tag.trim();
+                    tagsContainer.appendChild(tagSpan);
+                });
+            });
+			
             // Back to top button
             const backToTopButton = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
@@ -849,6 +787,14 @@
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+			
+            function createFilterButton(dataFilter, textContent, container) {
+                const button = document.createElement('button');
+                button.classList.add('filter-btn');
+                button.setAttribute('data-filter', dataFilter);
+                button.textContent = textContent;
+                container.appendChild(button);
+            }
         });
     </script>
 </body>
