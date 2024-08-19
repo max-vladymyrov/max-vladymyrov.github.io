@@ -249,7 +249,6 @@
 		    flex-wrap: wrap;
 		    gap: 5px;
 		}
-
 		.tag {
 		    background-color: #e0e0e0;
 		    color: #333;
@@ -277,10 +276,10 @@
 		    font-size: 1rem;
 		    color: #555;
 		}
-
 		.button-row {
 		    display: flex;
 		    overflow-x: auto;
+			flex-wrap: wrap;
 		    padding-bottom: 10px;
 		    margin-bottom: 10px;
 		    -webkit-overflow-scrolling: touch;
@@ -706,7 +705,6 @@
             const publicationCards = document.querySelectorAll('.publication-card');
             const topicButtonsContainer = document.getElementById('topic-buttons');
             const venueButtonsContainer = document.getElementById('venue-buttons');
-		    const filterBtns = document.querySelectorAll('.filter-btn');
 
             // Collect unique topics and venues
             let uniqueTopics = new Set();
@@ -729,6 +727,7 @@
                 createFilterButton(`venue-${venue}`, venue, venueButtonsContainer);
             });
 
+		    const filterBtns = document.querySelectorAll('.filter-btn');
 		    filterBtns.forEach(btn => {
 		        btn.addEventListener('click', () => {
 		            const filter = btn.getAttribute('data-filter');
