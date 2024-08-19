@@ -283,6 +283,7 @@
 		    padding-bottom: 10px;
 		    margin-bottom: 10px;
 		    -webkit-overflow-scrolling: touch;
+			justify-content: flex-start;
 		}
 
 		.publication-filters {
@@ -319,6 +320,7 @@
 		    transition: background-color 0.3s, color 0.3s;
 		    font-size: 0.9rem;
 		    white-space: nowrap;
+			flex-grow: 1;
 		}
 
 		.filter-btn:hover {
@@ -397,7 +399,7 @@
 	</div>
 	<div class="tags"></div>
     </div>	
-    <div class="publication-card" data-year="2024" data-tags="language-models,mechanistic-interpretability,hallucinations">
+    <div class="publication-card" data-year="2024" data-tags="language-models,mechanistic-interpretability,hallucinations,model-adaptation">
         <div class="venue-tag">ICML Workshop</div>
         <h3>Learning and Unlearning of Fabricated Knowledge in Language Models</h3>
         <p class="authors">Chen Sun, Nolan Miller, Andrey Zhmoginov, Max Vladymyrov, Mark Sandler</p>
@@ -732,11 +734,27 @@
 		        btn.addEventListener('click', () => {
 		            const filter = btn.getAttribute('data-filter');
 		            const filterGroup = btn.closest('.filter-group');
-            
+		            const isTopicFilter = filterGroup.querySelector('h4').textContent === 'Topic';
+
 		            // Remove active class from all buttons in this group
 		            filterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
 		            // Add active class to clicked button
 		            btn.classList.add('active');
+
+		            // Automatic Reset Logic
+		            if (isTopicFilter) {
+		                // If a topic filter is clicked, reset venue filters to "All Venues"
+		                document.querySelector('[data-filter="all-venues"]').classList.add('active');
+		                document.querySelectorAll('[data-filter^="venue-"]').forEach(b => {
+		                    if (b !== btn) b.classList.remove('active');
+		                });
+		            } else {
+		                // If a venue filter is clicked, reset topic filters to "All Topics"
+		                document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		                document.querySelectorAll('[data-filter^="tag-"]').forEach(b => {
+		                    if (b !== btn) b.classList.remove('active');
+		                });
+		            }
 
 		            if (filter === 'all-years' || filter === 'all-topics' || filter === 'all-venues') {
 		                // If "All" is selected, show all cards
@@ -794,6 +812,8 @@
                 button.textContent = textContent;
                 container.appendChild(button);
             }
+		    document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		    document.querySelector('[data-filter="all-venues"]').classList.add('active');
         });
     </script>
 </body>
