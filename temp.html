@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Max Vladymyrov, Senior Research Scientist at Google DeepMind, specializing in in-context learning and mechanistic interpretability in AI and machine learning.">
+    <title>Max Vladymyrov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-right: 30px;
+            object-fit: cover;  
+            object-position: center; 
+            border: 4px solid #3498db;
+        }
+        .header-text h1 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+        .header-text p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        .social-icons {
+            margin-top: 15px;
+        }
+        .social-icons a {
+            color: #3498db;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #2980b9;
+        }
+        .about, .research-statement, .publications {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        .publication-filters {
+            margin-bottom: 2rem;
+        }
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+        .filter-group h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #555;
+            font-weight: 600;
+        }
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .filter-btn {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .publication-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .publication-card {
+            position: relative;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .publication-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .publication-card h3 {
+            margin-top: 10px;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            color: #2c3e50;
+        }
+        .authors, .venue {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .publication-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .pub-link {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .pub-link:hover {
+            background-color: #e0e0e0;
+        }
+        .pub-link i {
+            margin-right: 4px;
+        }
+        .venue-tag {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #3498db;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            border-radius: 12px;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 1rem;
+        }
+        .tag {
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        footer {
+            margin-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 1rem;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+        #back-to-top:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Max Vladymyrov",
+        "jobTitle": "Senior Research Scientist",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Google DeepMind"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "UC Merced"
+        },
+        "url": "https://max-vladymyrov.github.io/",
+        "sameAs": [
+            "https://twitter.com/mvladymyrov",
+            "https://www.linkedin.com/in/max-vladymyrov/",
+            "https://scholar.google.com/citations?user=pQZCrqcAAAAJ&hl=en"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <img src="max.png" alt="Max Vladymyrov">
+        <div class="header-text">
+            <h1>Max Vladymyrov</h1>
+            <p>Senior Research Scientist, Google DeepMind</p>
+            <div class="social-icons">
+                <a href="https://twitter.com/mvladymyrov" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/max-vladymyrov/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=pQZCrqcAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="about">
+        <h2>About</h2>
+        <p>
+            At Google DeepMind, I focus on developing novel machine learning architectures to advance in-context learning and mechanistic interpretability. My goal is to create efficient, interpretable architectures that enhance AI adaptability and trustworthiness.
+        </p>
+        <p>
+            Prior to joining DeepMind, I spent two years at Yahoo Labs. I completed my PhD at <a href="http://eecs.ucmerced.edu/">UC Merced</a>, focusing on large-scale dimensionality reduction problems. I hold two master's degrees in Computer Science and International Economic Relations, and a bachelor's degree in Applied Mathematics, all from <a href="http://www.univer.kharkov.ua/en"> Kharkiv National University</a> in Ukraine.
+        </p>
+        <!-- <a href="#" class="cta-button">Download CV</a> -->
+    </section>
+	
+    <section class="research-statement">
+        <h2>Research Statement</h2>
+        <p>With over a decade of experience in machine learning research, my current work focuses on in-context learning and mechanistic interpretability. This builds upon my foundation in meta-learning, nonlinear optimization, and manifold learning. I aim to develop novel, efficient architectures that enhance AI adaptability and interpretability. My ultimate goal is to create AI systems that are not only powerful, but also inherently understandable, trustworthy, and beneficial to humanity.</p>
+    </section>
+
+    <section class="publications">
+        <h2>Publications</h2>
+        <div class="publication-filters">
+            <div class="filter-group">
+                <h4>Topic</h4>
+                <div class="button-row" id="topic-buttons"></div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Venue</h4>
+                <div class="button-row" id="venue-buttons"></div>
+            </div>
+        </div>
+        <div class="publication-grid">
+	<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery,mesa-optimization">
+ 	   <div class="venue-tag">NeurIPS</div>
+ 	   <h3>Linear Transformers Are Versatile In-Context Learners</h3> 
+    	<p class="authors">Max Vladymyrov, Johannes von Oswald, Mark Sandler, Rong Ge</p>
+    	<p class="venue">38th Annual Conference on Neural Information Processing Systems (NeurIPS 2024)</p>
+    	<div class="publication-links">
+	        <a href="https://arxiv.org/abs/2402.14180" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        	<!--<a href="https://openreview.net/forum?id=MWV9zfgW9s" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>-->
+		<!--<a href="papers/icl-versatile.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>-->
+    	</div>			
+		<div class="tags"></div>
+	</div>
+	<div class="publication-card" data-year="2024" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery,mesa-optimization">
+    	<div class="venue-tag">ICML Workshop</div>
+    	<h3>Efficient Linear System Solver with Transformers</h3>
+    	<p class="authors">Max Vladymyrov, Johannes von Oswald, Nolan Miller, Mark Sandler</p>
+    	<p class="venue">AI for Math Workshop, ICML 2024</p>
+    	<div class="publication-links">
+        	<a href="https://openreview.net/forum?id=qc2adlhAWF" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
+	    	<a href="papers/linsys-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    	</div>			
+		<div class="tags"></div>
+	</div>	
+    <div class="publication-card" data-year="2024" data-tags="learning-to-learn,meta-optimization,meta-learning">
+        <div class="venue-tag">Preprint</div>
+        <h3>Narrowing the Focus: Learned Optimizers for Pretrained Models</h3>
+        <p class="authors">Gus Kristiansen, Mark Sandler, Andrey Zhmoginov, Nolan Miller, Anirudh Goyal, Jihwan Lee, Max Vladymyrov</p>
+        <p class="venue">arXiv:2408.09310</p>
+	<div class="publication-links">
+	    <a href="https://arxiv.org/abs/2408.09310" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+	</div>
+	<div class="tags"></div>
+    </div>	
+    <div class="publication-card" data-year="2024" data-tags="language-models,mechanistic-interpretability,hallucinations,model-adaptation">
+        <div class="venue-tag">ICML Workshop</div>
+        <h3>Learning and Unlearning of Fabricated Knowledge in Language Models</h3>
+        <p class="authors">Chen Sun, Nolan Miller, Andrey Zhmoginov, Max Vladymyrov, Mark Sandler</p>
+        <p class="venue">Mechanistic Interpretability Workshop, ICML 2024</p>
+        <div class="publication-links">
+            <a href="https://openreview.net/forum?id=R5Q5lANcjY" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
+        </div>
+	<div class="tags"></div>
+    </div>
+
+<div class="publication-card" data-year="2024" data-tags="in-context-learning,task-specialization">
+    <div class="venue-tag">ICML Workshop</div>
+    <h3>Learning Fast and Slow: Representations for In-Context Weight Modulation</h3> 
+    <p class="authors">Andrey Zhmoginov, Jihwan Lee, Max Vladymyrov, Mark Sandler</p>
+    <p class="venue">Workshop on In-Context Learning, ICML 2024 </p>
+    <div class="publication-links">
+        <a href="https://openreview.net/forum?id=XDzS9lCfQc" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
+    </div>			
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2024" data-tags="few-shot-learning,hypernetworks,task-specialization">
+    <div class="venue-tag">TMLR</div>
+    <h3>Continual HyperTransformer: A Meta-Learner for Continual Few-Shot Learning</h3> 
+    <p class="authors">Max Vladymyrov, Andrey Zhmoginov, Mark Sandler</p>
+    <p class="venue">Transactions on Machine Learning Research, 2024</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2301.04584" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="https://openreview.net/forum?id=zdtSqZnkx1" class="pub-link"><i class="fas fa-file-pdf"></i> OpenReview</a>
+	<a href="papers/cht_poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2023" data-tags="in-context-learning,mechanistic-interpretability,mesa-optimization">
+    <div class="venue-tag">Preprint</div>
+    <h3>Uncovering Mesa-Optimization Algorithms in Transformers</h3> 
+    <p class="authors">Johannes von Oswald, Eyvind Niklasson, Maximilian Schlegel, Seijin Kobayashi, Nicolas Zucchet, Nino Scherrer, Nolan Miller, Mark Sandler, Max Vladymyrov, Razvan Pascanu, João Sacramento</p>
+    <p class="venue">arXiv:2309.05858</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2309.05858" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2023" data-tags="in-context-learning,mechanistic-interpretability,algorithm-discovery">
+    <div class="venue-tag">ICML</div>
+    <h3>Transformers Learn In-Context by Gradient Descent</h3> 
+    <p class="authors">Johannes von Oswald, Eyvind Niklasson, Ettore Randazzo, João Sacramento, Alexander Mordvintsev, Andrey Zhmoginov, Max Vladymyrov</p>
+    <p class="venue">International Conference on Machine Learning (ICML 2023)</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2212.07677" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="papers/icl-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2023" data-tags="nonlinear-optimization,model-adaptation">
+    <div class="venue-tag">Preprint</div>
+    <h3>Training Trajectories, Mini-Batch Losses and the Curious Role of the Learning Rate</h3> 
+    <p class="authors">Mark Sandler, Andrey Zhmoginov, Max Vladymyrov, Nolan Miller</p>
+    <p class="venue">arXiv preprint arXiv:2301.02312</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2301.02312" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2023" data-tags="meta-learning,learning-to-learn">
+    <div class="venue-tag">CVPR</div>
+    <h3>Decentralized Learning with Multi-Headed Distillation</h3> 
+    <p class="authors">Andrey Zhmoginov, Mark Sandler, Nolan Miller, Gus Kristiansen, Max Vladymyrov</p>
+    <p class="venue">Computer Vision and Pattern Recognition (CVPR 2023)</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2211.15774" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+	<a href="papers/cvpr23-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2022" data-tags="few-shot-learning,hypernetworks,task-specialization">
+    <div class="venue-tag">ICML</div>			
+    <h3>HyperTransformer: Model Generation for Supervised and Semi-Supervised Few-Shot Learning</h3> 
+    <p class="authors">Andrey Zhmoginov, Mark Sandler, Max Vladymyrov</p>
+    <p class="venue">International Conference on Machine Learning (ICML 2022)</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2201.04182" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+	<a href="papers/ht-poster.png" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+	<a href="https://www.youtube.com/watch?v=D6osiiEoV0w" class="pub-link"><i class="fas fa-video"></i> Video</a>
+	
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2022" data-tags="nonlinear-optimization,model-adaptation">
+    <div class="venue-tag">ICLR</div>
+    <h3>GradMax: Growing Neural Networks Using Gradient Information</h3> 
+    <p class="authors">Utku Evci, Bart van Merrienboer, Thomas Unterthiner, Max Vladymyrov, Fabian Pedregosa</p>
+    <p class="venue">International Conference on Learning Representations (ICLR 2022)</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2201.05125" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="papers/gradmax-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2022" data-tags="nonlinear-optimization,model-adaptation">
+    <div class="venue-tag">CVPR</div>			
+    <h3>Fine-Tuning Image Transformers Using Learnable Memory</h3> 
+    <p class="authors">Mark Sandler, Andrey Zhmoginov, Max Vladymyrov, Andrew Jackson</p>
+    <p class="venue">Computer Vision and Pattern Recognition (CVPR 2022)</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2203.15243" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="papers/memory-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>	    
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2022" data-tags="model-adaptation,generalization">
+    <div class="venue-tag">JMLR</div>			
+    <h3>Underspecification Presents Challenges for Credibility in Modern Machine Learning</h3> 
+    <p class="authors">Alexander D'Amour, Katherine Heller, Dan Moldovan, Ben Adlam, Babak Alipanahi, Alex Beutel, Christina Chen, Jonathan Deaton, Jacob Eisenstein, Matthew D. Hoffman, Farhad Hormozdiari, Neil Houlsby, Shaobo Hou, Ghassen Jerfel, Alan Karthikesalingam, Mario Lucic, Yian Ma, Cory McLean, Diana Mincu, Akinori Mitani, Andrea Montanari, Zachary Nado, Vivek Natarajan, Christopher Nielson, Thomas F. Osborne, Rajiv Raman, Kim Ramasamy, Rory Sayres, Jessica Schrouff, Martin Seneviratne, Shannon Sequeira, Harini Suresh, Victor Veitch, Max Vladymyrov, Xuezhi Wang, Kellie Webster, Steve Yadlowsky, Taedong Yun, Xiaohua Zhai, D. Sculley</p>
+    <p class="venue">Journal of Machine Learning Research, 2022</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2011.03395" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+	<a href="https://www.youtube.com/watch?v=gch94ttuy5s" class="pub-link"><i class="fas fa-video"></i> Video</a>
+    </div>
+	<div class="tags"></div>
+</div>	
+
+<div class="publication-card" data-year="2021" data-tags="meta-learning,learning-to-learn,meta-optimization">
+    <div class="venue-tag">ICML</div>			
+    <h3>Meta-Learning Bidirectional Update Rules</h3> 
+    <p class="authors">Mark Sandler, Max Vladymyrov, Andrey Zhmoginov, Nolan Miller, Andrew Jackson, Tom Madams, Blaise Agüera y Arcas</p>
+    <p class="venue">38th International Conference on Machine Learning (ICML 2021), pp. 9288-9300</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/2104.04657" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="papers/BLUR_poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+        <a href="papers/BLUR_ICML_presentation.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+        <a href="https://github.com/google-research/google-research/tree/master/blur" class="pub-link"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2019" data-tags="manifold-learning">
+    <div class="venue-tag">NeurIPS</div>			
+    <h3>No Pressure! Addressing the Problem of Local Minima in Manifold Learning Algorithms</h3> 
+    <p class="authors">Max Vladymyrov</p>
+    <p class="venue">33th Annual Conference on Neural Information Processing Systems (NeurIPS 2019), pp. 678-687</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/1906.11389" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="pp_poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+        <a href="pp_slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+
+
+<div class="publication-card" data-year="2017" data-tags="manifold-learning">
+    <div class="venue-tag">IJCNN</div>			
+    <h3>Fast, Accurate Spectral Clustering Using Locally Linear Landmarks</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">30th International Joint Conference on Neural Networks (IJCNN 2017), pp. 3870-3879</p>
+    <div class="publication-links">
+        <a href="papers/ijcnn17.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/ijcnn17-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2016" data-tags="manifold-learning">
+    <div class="venue-tag">ICML</div>			
+    <h3>The Variational Nyström Method for Large-Scale Spectral Problems</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">33th International Conference on Machine Learning (ICML 2016)</p>
+    <div class="publication-links">
+        <a href="papers/icml16.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/icml16-supp.pdf" class="pub-link"><i class="fas fa-file-alt"></i> Supplementary</a>
+        <a href="http://icml.cc/2016/reviews/128.txt" class="pub-link"><i class="fas fa-comments"></i> Reviews</a>
+        <a href="papers/icml16-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+        <a href="papers/icml16-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2015" data-tags="manifold-learning">
+    <div class="venue-tag">NeurIPS</div>			
+    <h3>A Fast, Universal Algorithm to Learn Parametric Nonlinear Embeddings</h3> 
+    <p class="authors">Miguel Á. Carreira-Perpiñán, Max Vladymyrov</p>
+    <p class="venue">29th Annual Conference on Neural Information Processing Systems (NIPS 2015), pp. 253-261</p>
+    <div class="publication-links">
+        <a href="https://nips.cc/Conferences/2015/AcceptedPapers" class="pub-link"><i class="fas fa-external-link-alt"></i> Conference</a>
+        <a href="papers/nips15.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/nips15-supp.zip" class="pub-link"><i class="fas fa-file-archive"></i> Supplementary</a>
+        <a href="https://media.nips.cc/nipsbooks/nipspapers/paper_files/nips28/reviews/134.html" class="pub-link"><i class="fas fa-comments"></i> Reviews</a>
+        <a href="papers/nips15-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2014" data-tags="manifold-learning">
+    <div class="venue-tag">AISTATS</div>			
+    <h3>Linear-Time Training of Nonlinear Low-Dimensional Embeddings</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">17th International Conference on Artificial Intelligence and Statistics (AISTATS 2014), pp. 968-977</p>
+    <div class="publication-links">
+        <a href="papers/aistats14b.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/aistats14-supp/index.html" class="pub-link"><i class="fas fa-file-alt"></i> Supplementary</a>
+        <a href="papers/aistats14-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2013" data-tags="manifold-learning">
+    <div class="venue-tag">ECML-PKDD</div>			
+    <h3>Locally Linear Landmarks for Large-Scale Manifold Learning</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">24th European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML-PKDD 2013), pp. 256-271</p>
+    <div class="publication-links">
+        <a href="http://dx.doi.org/10.1007/978-3-642-40994-3_17" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+        <a href="papers/ecml13.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/ecml13-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+        <a href="papers/ecml13-slides.pdf" class="pub-link"><i class="fas fas fa-file-powerpoint"></i> Slides</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2013" data-tags="manifold-learning">
+    <div class="venue-tag">ICML</div>
+    <h3>Entropic Affinities: Properties and Efficient Numerical Computation</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">30th International Conference on Machine Learning (ICML 2013), pp. 477-485</p>
+    <div class="publication-links">
+        <a href="https://proceedings.mlr.press/v28/vladymyrov13" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+        <a href="papers/icml13.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/icml13-supp/index.html" class="pub-link"><i class="fas fa-file-alt"></i> Supplementary</a>
+        <a href="papers/icml13-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+        <a href="papers/icml13-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+<div class="publication-card" data-year="2012" data-tags="manifold-learning">
+    <div class="venue-tag">ICML</div>
+    <h3>Partial-Hessian Strategies for Fast Learning of Nonlinear Embeddings</h3> 
+    <p class="authors">Max Vladymyrov, Miguel Á. Carreira-Perpiñán</p>
+    <p class="venue">29th International Conference on Machine Learning (ICML 2012), pp. 345-352</p>
+    <div class="publication-links">
+        <a href="https://arxiv.org/abs/1206.4646" class="pub-link"><i class="fas fa-file-pdf"></i> arXiv</a>
+        <a href="papers/icml12.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> Preprint</a>
+        <a href="papers/icml12-supp/index.html" class="pub-link"><i class="fas fa-file-alt"></i> Supplementary</a>
+        <a href="papers/icml12-slides.pdf" class="pub-link"><i class="fas fa-file-powerpoint"></i> Slides</a>
+        <a href="papers/icml12-poster.pdf" class="pub-link"><i class="fas fa-image"></i> Poster</a>
+    </div>
+	<div class="tags"></div>
+</div>
+
+</section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 Max Vladymyrov.</p>
+        </div>
+        <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+    </footer>
+    <script>
+		// JavaScript for interactive elements
+		document.addEventListener('DOMContentLoaded', function() {
+		    const publicationCards = document.querySelectorAll('.publication-card');
+		    const topicButtonsContainer = document.getElementById('topic-buttons');
+		    const venueButtonsContainer = document.getElementById('venue-buttons');
+
+		    // Collect unique topics and venues
+		    let uniqueTopics = new Set();
+		    let uniqueVenues = new Set();
+		    publicationCards.forEach(card => {
+		        const tags = card.getAttribute('data-tags').split(',');
+		        tags.forEach(tag => uniqueTopics.add(tag.trim()));
+		        uniqueVenues.add(card.querySelector('.venue-tag').textContent.trim());
+		    });
+
+		    // Create filter buttons for topics
+		    createFilterButton('all-topics', 'All Topics', topicButtonsContainer);
+		    uniqueTopics.forEach(topic => {
+		        createFilterButton(`tag-${topic}`, topic, topicButtonsContainer);
+		    });
+
+		    // Create filter buttons for venues
+		    createFilterButton('all-venues', 'All Venues', venueButtonsContainer);
+		    uniqueVenues.forEach(venue => {
+		        createFilterButton(`venue-${venue}`, venue, venueButtonsContainer);
+		    });
+
+		const filterBtns = document.querySelectorAll('.filter-btn');
+		filterBtns.forEach(btn => {
+		    btn.addEventListener('click', () => {
+		        const filter = btn.getAttribute('data-filter');
+		        const filterGroup = btn.closest('.filter-group');
+		        const isTopicFilter = filterGroup.querySelector('h4').textContent === 'Topic';
+
+		        // Remove active class from all buttons in this group
+		        filterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+		        // Add active class to clicked button
+		        btn.classList.add('active');
+
+		        // Automatic Reset Logic
+		        if (isTopicFilter) {
+		            // If a topic filter is clicked, reset venue filters to "All Venues"
+		            document.querySelector('[data-filter="all-venues"]').classList.add('active');
+		            document.querySelectorAll('[data-filter^="venue-"]').forEach(b => {
+		                if (b !== btn) b.classList.remove('active');
+		            });
+		        } else {
+		            // If a venue filter is clicked, reset topic filters to "All Topics"
+		            document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		            document.querySelectorAll('[data-filter^="tag-"]').forEach(b => {
+		                if (b !== btn) b.classList.remove('active');
+		            });
+		        }
+
+		        if (filter === 'all-years' || filter === 'all-topics' || filter === 'all-venues') {
+		            // If "All" is selected, show all cards
+		            publicationCards.forEach(card => card.style.display = 'block');
+		        } else if (filter.startsWith('tag-')) {
+		            const tag = filter.replace('tag-', '');
+		            publicationCards.forEach(card => {
+		                const cardTags = card.getAttribute('data-tags').split(',');
+		                card.style.display = cardTags.includes(tag) ? 'block' : 'none';
+		            });
+		        } else if (filter.startsWith('venue-')) {
+		            const venue = filter.replace('venue-', '').toUpperCase();
+		            publicationCards.forEach(card => {
+		                const cardVenue = card.querySelector('.venue-tag').textContent.toUpperCase();
+		                card.style.display = cardVenue.includes(venue) ? 'block' : 'none';
+		            });
+		        } else {
+		            // Year filter
+		            publicationCards.forEach(card => {
+		                card.style.display = card.getAttribute('data-year') === filter ? 'block' : 'none';
+		            });
+		        }
+		    });
+		});
+
+		    publicationCards.forEach(card => {
+		        const tagsContainer = card.querySelector('.tags');
+		        const tags = card.getAttribute('data-tags').split(',');
+		        tags.forEach(tag => {
+		            const tagSpan = document.createElement('span');
+		            tagSpan.classList.add('tag');
+		            tagSpan.textContent = tag.trim();
+		            tagsContainer.appendChild(tagSpan);
+		        });
+		    });
+
+		    // Back to top button
+		    const backToTopButton = document.getElementById('back-to-top');
+		    window.addEventListener('scroll', () => {
+		        if (window.pageYOffset > 300) {
+		            backToTopButton.style.display = 'block';
+		        } else {
+		            backToTopButton.style.display = 'none';
+		        }
+		    });
+
+		    backToTopButton.addEventListener('click', () => {
+		        window.scrollTo({ top: 0, behavior: 'smooth' });
+		    });
+
+		    function createFilterButton(dataFilter, textContent, container) {
+		        const button = document.createElement('button');
+		        button.classList.add('filter-btn');
+		        button.setAttribute('data-filter', dataFilter);
+		        button.textContent = textContent;
+		        container.appendChild(button);
+		    }
+		document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		document.querySelector('[data-filter="all-venues"]').classList.add('active');
+		});
+    </script>
+</body>
+</html>
