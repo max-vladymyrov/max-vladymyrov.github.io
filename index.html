@@ -7,27 +7,326 @@
     <title>Max Vladymyrov</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css" media="screen">
+    <style>
+		html {
+		    scroll-behavior: smooth;
+		}
+		body {
+		    font-family: 'Open Sans', sans-serif;
+		    line-height: 1.6;
+		    color: #333;
+		    max-width: 800px;
+		    margin: 0 auto;
+		    padding: 20px;
+		}
+		.header {
+		    display: flex;
+		    align-items: center;
+		    padding: 20px;
+		    background-color: #f9f9f9;
+		    border-radius: 10px;
+		    margin-bottom: 30px;
+		}
+		.header img {
+		    width: 150px;
+		    height: 150px;
+		    border-radius: 50%;
+		    margin-right: 30px;
+		    object-fit: cover;  
+		    object-position: center; 
+		}
+		.header-text h1 {
+		    margin: 0 0 10px 0;
+		    color: #2c3e50;
+		}
+		.header-text p {
+		    margin: 0;
+		    color: #7f8c8d;
+		}
+		.social-icons a {
+		    color: #3498db;
+		    font-size: 1.5rem;
+		    margin-right: 1rem;
+		}
+		.about {
+		    margin-bottom: 2rem;
+		}
+		.about h2 {
+		    color: #2c3e50;
+		}
+		.cta-button {
+		    display: inline-block;
+		    background-color: #3498db;
+		    color: white;
+		    padding: 0.5rem 1rem;
+		    text-decoration: none;
+		    border-radius: 5px;
+		    margin-top: 1rem;
+		}
+		.publications {
+		  margin-bottom: 2rem;
+		}
+		.filter-btn {
+		    padding: 8px 16px;
+		    border: none;
+		    border-radius: 20px;
+		    background-color: #f0f0f0;
+		    color: #333;
+		    cursor: pointer;
+		    transition: all 0.3s ease;
+		    margin-right: 10px;
+		    margin-bottom: 10px;
+		}
+		.filter-button {
+		  padding: 8px 16px;
+		  border: 1px solid #ccc;
+		  border-radius: 20px;
+		  background-color: #f0f0f0;
+		  cursor: pointer;
+		  transition: background-color 0.3s;All Years
+		}
+		.filter-buttons {
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 10px;
+		  margin-bottom: 20px;
+		}
+		.filter-btn:hover {
+		    background-color: #e0e0e0;
+		}
+
+		.filter-btn.active {
+		    background-color: #3498db;
+		    color: white;
+		}
+		.year-buttons, .topic-buttons, .venue-buttons {
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 8px;
+		  margin-bottom: 15px;
+		}
+
+		#all-button {
+		  font-weight: bold;
+		  background-color: #007bff;
+		  color: white;
+		}
+		.publication-grid {
+		    display: grid;
+		    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		    gap: 1rem;
+		}
+		.publication-card {
+		    position: relative;
+		    padding: 1rem;
+		    border: 1px solid #e0e0e0;
+		    border-radius: 5px;
+		    margin-bottom: 1rem;
+		    display: flex;
+		    flex-direction: column;
+		    min-height: 200px;
+		}
+		.publication-card h3 {
+		    margin-top: 25px; /* Add margin to the top of the title */
+		    margin-bottom: 0.5rem;
+		    line-height: 1.3;
+		}
+		.authors, .venue {
+		    font-size: 0.9rem;
+		    color: #666;
+		    margin-bottom: 0.5rem;
+		}
+		.publication-links {
+		    margin-top: auto;
+		  margin-bottom: 60px;
+		    display: flex;
+		    flex-wrap: wrap;
+		    gap: 10px;
+		}
+		.pub-link {
+		    padding: 5px 10px;
+		    background-color: #f0f0f0;
+		    border-radius: 15px;
+		    font-size: 0.9em;
+		    text-decoration: none;
+		    color: #333;
+		    transition: background-color 0.3s ease;
+		}
+		.pub-link:hover {
+		    background-color: #e0e0e0;
+		}
+		.pub-link i {
+		    margin-right: 4px;
+		}
+		.research-interests, .current-projects {
+		      margin-bottom: 2rem;
+		}
+		.project-card {
+		    background-color: #f9f9f9;
+		    padding: 1rem;
+		    border-radius: 5px;
+		    margin-bottom: 1rem;
+		}
+		.contact form {
+		    display: flex;
+		    flex-direction: column;
+		}
+		.contact input, .contact textarea {
+		    margin-bottom: 1rem;
+		    padding: 0.5rem;
+		}
+		.contact button {
+		    background-color: #3498db;
+		    color: white;
+		    border: none;
+		    padding: 0.5rem;
+		    cursor: pointer;
+		}
+		footer {
+		    margin-top: 2rem;
+		    border-top: 1px solid #e0e0e0;
+		    padding-top: 1rem;
+		}
+		.footer-content {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		}
+		#back-to-top {
+		    position: fixed;
+		    bottom: 20px;
+		    right: 20px;
+		    background-color: #3498db;
+		    color: white;
+		    border: none;
+		    border-radius: 50%;
+		    width: 40px;
+		    height: 40px;
+		    font-size: 1.2rem;
+		    cursor: pointer;
+		    display: none;
+		}
+		.filter-btn[data-filter^="tag-"] {
+		    background-color: #e0e0e0;
+		    color: #333;
+		}
+		.filter-btn[data-filter^="tag-"].active {
+		    background-color: #2980b9;
+		    color: white;
+		}
+		.tags {
+		    position: absolute;
+		    bottom: 0.5rem;
+		    left: 1rem;
+		    right: 1rem;
+		    display: flex;
+		    flex-wrap: wrap;
+		    gap: 5px;
+		}
+		.tag {
+		    background-color: #e0e0e0;
+		    color: #333;
+		    padding: 2px 8px;
+		    border-radius: 12px;
+		    font-size: 0.8rem;
+		    white-space: nowrap;
+		}
+		.venue-tag {
+		    position: absolute;
+		    top: 0.5rem;
+		    right: 0.5rem;
+		    background-color: #3498db;
+		    color: white;
+		    padding: 2px 8px;
+		    font-size: 0.8rem;
+		    border-radius: 12px;
+		}
+		.filter-group {
+		    margin-bottom: 1rem;
+		}
+		.filter-group h4 {
+		    margin-bottom: 0.5rem;
+		    font-size: 1rem;
+		    color: #555;
+		}
+		.button-row {
+		    display: flex;
+		    overflow-x: auto;
+		  flex-wrap: wrap;
+		    padding-bottom: 10px;
+		    margin-bottom: 10px;
+		    -webkit-overflow-scrolling: touch;
+		  justify-content: flex-start;
+		}
+		.publication-filters {
+		    margin-bottom: 2rem;
+		}
+		.filter-group {
+		    margin-bottom: 1rem;
+		}
+		.filter-group h4 {
+		    margin-bottom: 0.5rem;
+		    font-size: 1rem;
+		    color: #555;
+		    font-weight: 600;
+		}
+		.button-row {
+		    display: flex;
+		    overflow-x: auto;
+		    padding-bottom: 10px;
+		    margin-bottom: 10px;
+		    -webkit-overflow-scrolling: touch;
+		}
+		.filter-btn {
+		    flex: 0 0 auto;
+		    background-color: #f0f0f0;
+		    border: none;
+		    border-radius: 20px;
+		    padding: 8px 16px;
+		    margin-right: 10px;
+		    cursor: pointer;
+		    transition: background-color 0.3s, color 0.3s;
+		    font-size: 0.9rem;
+		    white-space: nowrap;
+		  flex-grow: 1;
+		}
+		.filter-btn:hover {
+		    background-color: #e0e0e0;
+		}
+		.filter-btn.active {
+		    background-color: #3498db;
+		    color: white;
+		}
+		/* Hide scrollbar for Chrome, Safari and Opera */
+		.button-row::-webkit-scrollbar {
+		    display: none;
+		}
+		/* Hide scrollbar for IE, Edge and Firefox */
+		.button-row {
+		    -ms-overflow-style: none;  /* IE and Edge */
+		    scrollbar-width: none;  /* Firefox */
+		}
+    </style>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Max Vladymyrov",
-      "jobTitle": "Senior Research Scientist",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Google DeepMind"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "UC Merced"
-      },
-      "url": "https://max-vladymyrov.github.io/",
-      "sameAs": [
-        "https://twitter.com/mvladymyrov",
-        "https://www.linkedin.com/in/max-vladymyrov/",
-        "https://scholar.google.com/citations?user=pQZCrqcAAAAJ&hl=en"
-      ]
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Max Vladymyrov",
+        "jobTitle": "Senior Research Scientist",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Google DeepMind"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "UC Merced"
+        },
+        "url": "https://max-vladymyrov.github.io/",
+        "sameAs": [
+            "https://twitter.com/mvladymyrov",
+            "https://www.linkedin.com/in/max-vladymyrov/",
+            "https://scholar.google.com/citations?user=pQZCrqcAAAAJ&hl=en"
+        ]
     }
     </script>
 </head>
@@ -371,10 +670,124 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Max Vladymyrov.</p>
+            <p>© 2024 Max Vladymyrov.</p>
         </div>
         <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
     </footer>
-    <script src="myscripts.js"></script>
+    <script>
+		// JavaScript for interactive elements
+		document.addEventListener('DOMContentLoaded', function() {
+		    const publicationCards = document.querySelectorAll('.publication-card');
+		    const topicButtonsContainer = document.getElementById('topic-buttons');
+		    const venueButtonsContainer = document.getElementById('venue-buttons');
+
+		    // Collect unique topics and venues
+		    let uniqueTopics = new Set();
+		    let uniqueVenues = new Set();
+		    publicationCards.forEach(card => {
+		        const tags = card.getAttribute('data-tags').split(',');
+		        tags.forEach(tag => uniqueTopics.add(tag.trim()));
+		        uniqueVenues.add(card.querySelector('.venue-tag').textContent.trim());
+		    });
+
+		    // Create filter buttons for topics
+		    createFilterButton('all-topics', 'All Topics', topicButtonsContainer);
+		    uniqueTopics.forEach(topic => {
+		        createFilterButton(`tag-${topic}`, topic, topicButtonsContainer);
+		    });
+
+		    // Create filter buttons for venues
+		    createFilterButton('all-venues', 'All Venues', venueButtonsContainer);
+		    uniqueVenues.forEach(venue => {
+		        createFilterButton(`venue-${venue}`, venue, venueButtonsContainer);
+		    });
+
+		const filterBtns = document.querySelectorAll('.filter-btn');
+		filterBtns.forEach(btn => {
+		    btn.addEventListener('click', () => {
+		        const filter = btn.getAttribute('data-filter');
+		        const filterGroup = btn.closest('.filter-group');
+		        const isTopicFilter = filterGroup.querySelector('h4').textContent === 'Topic';
+
+		        // Remove active class from all buttons in this group
+		        filterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+		        // Add active class to clicked button
+		        btn.classList.add('active');
+
+		        // Automatic Reset Logic
+		        if (isTopicFilter) {
+		            // If a topic filter is clicked, reset venue filters to "All Venues"
+		            document.querySelector('[data-filter="all-venues"]').classList.add('active');
+		            document.querySelectorAll('[data-filter^="venue-"]').forEach(b => {
+		                if (b !== btn) b.classList.remove('active');
+		            });
+		        } else {
+		            // If a venue filter is clicked, reset topic filters to "All Topics"
+		            document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		            document.querySelectorAll('[data-filter^="tag-"]').forEach(b => {
+		                if (b !== btn) b.classList.remove('active');
+		            });
+		        }
+
+		        if (filter === 'all-years' || filter === 'all-topics' || filter === 'all-venues') {
+		            // If "All" is selected, show all cards
+		            publicationCards.forEach(card => card.style.display = 'block');
+		        } else if (filter.startsWith('tag-')) {
+		            const tag = filter.replace('tag-', '');
+		            publicationCards.forEach(card => {
+		                const cardTags = card.getAttribute('data-tags').split(',');
+		                card.style.display = cardTags.includes(tag) ? 'block' : 'none';
+		            });
+		        } else if (filter.startsWith('venue-')) {
+		            const venue = filter.replace('venue-', '').toUpperCase();
+		            publicationCards.forEach(card => {
+		                const cardVenue = card.querySelector('.venue-tag').textContent.toUpperCase();
+		                card.style.display = cardVenue.includes(venue) ? 'block' : 'none';
+		            });
+		        } else {
+		            // Year filter
+		            publicationCards.forEach(card => {
+		                card.style.display = card.getAttribute('data-year') === filter ? 'block' : 'none';
+		            });
+		        }
+		    });
+		});
+
+		    publicationCards.forEach(card => {
+		        const tagsContainer = card.querySelector('.tags');
+		        const tags = card.getAttribute('data-tags').split(',');
+		        tags.forEach(tag => {
+		            const tagSpan = document.createElement('span');
+		            tagSpan.classList.add('tag');
+		            tagSpan.textContent = tag.trim();
+		            tagsContainer.appendChild(tagSpan);
+		        });
+		    });
+
+		    // Back to top button
+		    const backToTopButton = document.getElementById('back-to-top');
+		    window.addEventListener('scroll', () => {
+		        if (window.pageYOffset > 300) {
+		            backToTopButton.style.display = 'block';
+		        } else {
+		            backToTopButton.style.display = 'none';
+		        }
+		    });
+
+		    backToTopButton.addEventListener('click', () => {
+		        window.scrollTo({ top: 0, behavior: 'smooth' });
+		    });
+
+		    function createFilterButton(dataFilter, textContent, container) {
+		        const button = document.createElement('button');
+		        button.classList.add('filter-btn');
+		        button.setAttribute('data-filter', dataFilter);
+		        button.textContent = textContent;
+		        container.appendChild(button);
+		    }
+		document.querySelector('[data-filter="all-topics"]').classList.add('active');
+		document.querySelector('[data-filter="all-venues"]').classList.add('active');
+		});
+    </script>
 </body>
 </html>
