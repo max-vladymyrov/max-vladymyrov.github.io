@@ -680,7 +680,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>© 2024 Max Vladymyrov.</p>
+            <p>© 2025 Max Vladymyrov.</p>
         </div>
         <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
     </footer>
@@ -695,14 +695,18 @@
 		    let uniqueTopics = new Set();
 		    let uniqueVenues = new Set();
 		    publicationCards.forEach(card => {
+		        const venueTag = card.querySelector('.venue-tag').textContent.trim();
+		        if (venueTag !== 'ICML Workshop') { // Exclude ICML Workshop
+		            uniqueVenues.add(venueTag);
+		        }
 		        const tags = card.getAttribute('data-tags').split(',');
 		        tags.forEach(tag => uniqueTopics.add(tag.trim()));
-		        uniqueVenues.add(card.querySelector('.venue-tag').textContent.trim());
 		    });
+
 
 		    // Convert Set to Array and define desired order
 		    uniqueVenues = Array.from(uniqueVenues);
-		    const preferredVenueOrder = ["ICML", "NeurIPS", "ICLR"];
+		    const preferredVenueOrder = ["ICML", "NeurIPS", "ICLR", "TMLR", "CVPR"];
 
 		    // Custom sort function for venues
 		    uniqueVenues.sort((a, b) => {
