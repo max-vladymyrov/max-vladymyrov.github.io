@@ -306,6 +306,36 @@
 		    -ms-overflow-style: none;  /* IE and Edge */
 		    scrollbar-width: none;  /* Firefox */
 		}
+        /* Blog Section CSS */
+        .blog {
+            margin-bottom: 2rem;
+        }
+        .blog h2 {
+            color: #2c3e50;
+        }
+        .blog-post-card {
+            background-color: #f9f9f9;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .blog-post-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .post-meta {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        .read-more-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+        }
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -352,14 +382,19 @@
         <p>
             Prior to joining DeepMind, I spent two years at Yahoo Labs. I completed my PhD at <a href="http://eecs.ucmerced.edu/">UC Merced</a>, focusing on large-scale dimensionality reduction problems. I hold two master's degrees in Computer Science and International Economic Relations, and a bachelor's degree in Applied Mathematics, all from <a href="https://karazin.ua/en/"> Kharkiv National University</a> in Ukraine.
         </p>
-        <!-- <a href="#" class="cta-button">Download CV</a> -->
+        </section>
+
+    <section class="blog">
+        <h2>From the Blog</h2>
+        <div class="blog-post-card">
+            <h3>In-Context Intelligence and The Paradox of Simple Objectives for Complex Models</h3>
+            <p class="post-meta">May 30, 2025</p>
+            <p>It always felt paradoxical to me that we train machine learning models with billions of parameters using simple scalar objectives like mean-squared error or cross-entropy loss. How can something so complex be reduced to a single fitness score? Yet, the results seem to defy this reductionist approach.</p>
+            <a href="blog/in-context-paradox.html" class="read-more-link">Read More →</a>
+        </div>
     </section>
 
-<!-- <section class="research-statement">
-    <h2>Research Statement</h2>
-    <p>With over a decade of experience in machine learning research, my current work focuses on in-context learning and mechanistic interpretability. This builds upon my foundation in meta-learning, nonlinear optimization, and manifold learning. I aim to develop novel, efficient architectures that enhance AI adaptability and interpretability. My ultimate goal is to create AI systems that are not only powerful, but also inherently understandable, trustworthy, and beneficial to humanity.</section> -->
-
-    <section class="publications">
+<section class="publications">
 		<section class="publications">
 		    <h2>Publications</h2>
         <div class="publication-filters">
