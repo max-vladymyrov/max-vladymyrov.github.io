@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Kristy! 🎉</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ede7f6 0%, #e0f7fa 100%);
+            color: #334155;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        #puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(30, 1fr);
+            gap: 1px;
+            border: 4px solid #d1c4e9;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 20 / 30;
+            background-color: #d1c4e9;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .cell {
+            position: relative;
+            background-color: #ffffff;
+        }
+        .blank {
+            background-color: #d1c4e9;
+        }
+        .cell input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: center;
+            font-size: clamp(10px, 2.5vw, 18px);
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            color: #334155;
+            transition: all 0.2s ease-in-out;
+        }
+        .cell input:focus {
+            outline: none;
+            background-color: #fff9c4;
+            transform: scale(1.02);
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+        }
+        .cell input.correct {
+            background-color: #c8e6c9 !important;
+            color: #2e7d32;
+        }
+        .cell input.incorrect {
+            background-color: #ffcdd2 !important;
+            color: #c62828;
+        }
+        .cell-number {
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            font-size: clamp(7px, 1.7vw, 11px);
+            font-weight: 700;
+            color: #673ab7;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .highlight {
+            background-color: #ffe082 !important;
+            box-shadow: inset 0 0 0 2px #ffb300;
+        }
+        .clue {
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            border-radius: 0.5rem;
+            padding: 0.6rem;
+            border: 1px solid #e1bee7;
+        }
+        .clue:hover {
+            background-color: #ede7f6;
+            transform: translateY(-2px);
+        }
+        .clue-highlight {
+            background-color: #fff9c4;
+            font-weight: 600;
+            border-color: #ffb300;
+            box-shadow: 0 2px 5px rgba(255, 204, 0, 0.3);
+        }
+        .btn-festive {
+            background: linear-gradient(180deg, #9575cd 0%, #673ab7 100%);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.2s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .btn-festive:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+        .btn-festive.blue {
+            background: linear-gradient(180deg, #80deea 0%, #2196f3 100%);
+        }
+        .btn-festive.green {
+            background: linear-gradient(180deg, #a5d6a7 0%, #4caf50 100%);
+        }
+        .btn-festive.red {
+            background: linear-gradient(180deg, #ffab91 0%, #ef5350 100%);
+        }
+        .header-festive {
+            position: relative;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            color: #5e35b1;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+        }
+        .header-festive h1 {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: #7e57c2;
+        }
+        .header-festive p {
+            font-size: 1.25rem;
+            color: #4527a0;
+        }
+        .header-festive::before,
+        .header-festive::after {
+            content: '🎉';
+            position: absolute;
+            font-size: 2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: bounce 1s infinite alternate;
+        }
+        .header-festive::before {
+            left: -3rem;
+        }
+        .header-festive::after {
+            right: -3rem;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(-50%) scale(1); }
+            to { transform: translateY(-60%) scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            .header-festive h1 { font-size: 2.5rem; }
+            .header-festive::before, .header-festive::after { font-size: 1.8rem; left: -1.5rem; right: -1.5rem; }
+        }
+        
+        .balloon {
+            position: fixed;
+            bottom: -150px;
+            width: 100px;
+            height: 120px;
+            background-color: #ef4444; /* Always red */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            z-index: 9999;
+            animation: floatUp 10s ease-in forwards;
+            box-shadow: inset -10px -10px 0 rgba(0,0,0,0.07);
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        @keyframes floatUp {
+            0% { bottom: -150px; opacity: 1; transform: rotate(15deg) translateX(0); }
+            100% { bottom: 110vh; opacity: 0; transform: rotate(-15deg) translateX(50px); }
+        }
+
+        .mistake-bird-container {
+            position: fixed;
+            top: 20%;
+            left: 0;
+            transform: translateX(-150px);
+            z-index: 10000;
+            animation: flyAcross 5s linear forwards;
+            pointer-events: none;
+            width: 80px;
+            height: 80px;
+        }
+        .mistake-bird {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            top: 0;
+            left: 0;
+            /* --- UPDATED BIRD URL --- */
+            background-image: url('bird.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bird-poop {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 20px;
+            top: 50px;
+            /* --- UPDATED POOP URL --- */
+            background-image: url('poop.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            animation: dropPoop 0.8s ease-in forwards;
+            animation-delay: 1.5s;
+        }
+        @keyframes flyAcross {
+            from { transform: translateX(-150px); }
+            to { transform: translateX(110vw); }
+        }
+        @keyframes dropPoop {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center header-festive">
+            <h1>Happy Birthday, Kristy!</h1>
+            <p class="mt-2">Hope you enjoy this little puzzle!</p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <div class="w-full lg:w-1/2 flex justify-center items-start">
+                <div id="puzzle-grid"></div>
+            </div>
+
+            <div class="w-full lg:w-1/2">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-slate-700">Clues</h2>
+                    <div class="flex space-x-2">
+                        <button id="check-button" class="btn-festive blue">Check</button>
+                        <button id="reveal-button" class="btn-festive green">Reveal All</button>
+                        <button id="clear-button" class="btn-festive red">Clear All</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-700 border-b-2 border-e1bee7 pb-2 mb-3">Across</h3>
+                        <div id="across-clues" class="space-y-2"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-700 border-b-2 border-e1bee7 pb-2 mb-3">Down</h3>
+                        <div id="down-clues" class="space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const GRID_ROWS = 30;
+        const GRID_COLS = 20;
+        const clues = { 
+            across: [
+                { number: 3, clue: "Month of our anniversary, one word.", start: { row: 1, col: 3 }, length: 4 },
+                { number: 5, clue: "*Not* the country of origin of Kristy's grandpa, but Max sometimes thinks it is.", start: { row: 4, col: 5 }, length: 8 },
+                { number: 8, clue: "Kristy's favorite cocktail.", start: { row: 9, col: 7 }, length: 12 },
+                { number: 14, clue: "Your go-to local park when the bikes are calling.", start: { row: 15, col: 13 }, length: 9 },
+                { number: 15, clue: "Type of coordination behind Kristy's killer serves.", start: { row: 16, col: 2 }, length: 7 },
+                { number: 16, clue: "*Name* of the kilted Scottish highland warrior, the mascot of Carlmont High School.", start: { row: 18, col: 0 }, length: 9 },
+                { number: 18, clue: "Documentary that Kristy rewatched countless times (without \"the\").", start: { row: 20, col: 8 }, length: 8 },
+                { number: 20, clue: "Favorite type of coffee.", start: { row: 23, col: 3 }, length: 7 },
+                { number: 21, clue: "Name of one of Kristy's dogs.", start: { row: 26, col: 6 }, length: 5 }
+            ],
+            down: [
+                { number: 1, clue: "Name of the *other* street that San Carlos house is located on (not bay view).", start: { row: 0, col: 5 }, length: 7 },
+                { number: 2, clue: "Food Kristy refuses to eat.", start: { row: 0, col: 9 }, length: 6 },
+                { number: 4, clue: "Favorite song of Kristy's teens by Dashboard Confessional:.", start: { row: 3, col: 11 }, length: 10 },
+                { number: 6, clue: "Favorite comfort food.", start: { row: 7, col: 14 }, length: 14 },
+                { number: 7, clue: "Name of one of Kristy's dogs.", start: { row: 7, col: 16 }, length: 6 },
+                { number: 9, clue: "Your most common modern-day \"emergency\".", start: { row: 9, col: 8 }, length: 10 },
+                { number: 10, clue: "The color that dominates your wardrobe.", start: { row: 11, col: 6 }, length: 6 },
+                { number: 11, clue: "Last name of Kristy favorite podcaster.", start: { row: 13, col: 18 }, length: 5 },
+                { number: 12, clue: "Country of origin of Kristy's grandpa", start: { row: 14, col: 11 }, length: 8 },
+                { number: 13, clue: "The park where our paths first crossed.", start: { row: 15, col: 0 }, length: 7 },
+                { number: 17, clue: "\"Do not disturb\" time of the day.", start: { row: 18, col: 4 }, length: 7 },
+                { number: 19, clue: "Name of one of Kristy's dogs.", start: { row: 22, col: 7 }, length: 6 }
+            ]
+        };
+        const solutions = {
+            across: { "3": "JULY", "5": "SLOVENIA", "8": "OLDFASHIONED", "14": "HUDDART", "15": "HANDEYE", "16": "CARLMONTY", "18": "ALPINIST", "20": "INSTANT", "21": "WISTA" },
+            down: { "1": "BLOSSOM", "2": "OLIVES", "4": "VINDICATED", "6": "CHICKENNUGGETS", "7": "GINGER", "9": "LOWBATTERY", "10": "PURPLE", "11": "PERIL", "12": "SLOVAKIA", "13": "PRECITA", "17": "MORNING", "19": "CASSIE" }
+        };
+
+        const puzzleGrid = document.getElementById('puzzle-grid');
+        const acrossCluesContainer = document.getElementById('across-clues');
+        const downCluesContainer = document.getElementById('down-clues');
+        const clearButton = document.getElementById('clear-button');
+        const checkButton = document.getElementById('check-button');
+        const revealButton = document.getElementById('reveal-button');
+
+        let gridData = Array(GRID_ROWS).fill(null).map(() => Array(GRID_COLS).fill(null));
+        let activeDirection = 'across';
+        let lastFocusedCell = null;
+        let solvedWords = new Set();
+
+        function launchBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = `${Math.random() * 90}vw`;
+            document.body.appendChild(balloon);
+
+            balloon.addEventListener('animationend', () => {
+                balloon.remove();
+            });
+        }
+
+        function triggerMistakeBird() {
+            const container = document.createElement('div');
+            container.className = 'mistake-bird-container';
+            container.style.top = `${Math.random() * 50 + 10}%`;
+
+            const bird = document.createElement('div');
+            bird.className = 'mistake-bird';
+
+            const poop = document.createElement('div');
+            poop.className = 'bird-poop';
+
+            container.appendChild(bird);
+            container.appendChild(poop);
+            document.body.appendChild(container);
+
+            container.addEventListener('animationend', () => {
+                container.remove();
+            });
+        }
+
+        function checkWordCompletion(clueNumber, direction) {
+            const word = clues[direction].find(w => w.number == clueNumber);
+            if (!word) return;
+
+            let currentAttempt = '';
+            for (let i = 0; i < word.length; i++) {
+                let r, c;
+                if (direction === 'across') { r = word.start.row; c = word.start.col + i; } 
+                else { r = word.start.row + i; c = word.start.col; }
+                const input = puzzleGrid.querySelector(`input[data-row="${r}"][data-col="${c}"]`);
+                if (input && input.value) { currentAttempt += input.value.toUpperCase(); } 
+                else { currentAttempt = ''; break; }
+            }
+
+            if (currentAttempt && currentAttempt === solutions[direction][clueNumber]) {
+                const wordId = `${direction}-${clueNumber}`;
+                if (!solvedWords.has(wordId)) {
+                    solvedWords.add(wordId);
+                    launchBalloon();
+                }
+            }
+        }
+
+        function initialize() {
+            clues.across.forEach(word => {
+                for (let i = 0; i < word.length; i++) {
+                    const r = word.start.row; const c = word.start.col + i;
+                    if (!gridData[r][c]) gridData[r][c] = {};
+                    gridData[r][c].across = word.number;
+                }
+                gridData[word.start.row][word.start.col].startOfAcross = word.number;
+            });
+            clues.down.forEach(word => {
+                for (let i = 0; i < word.length; i++) {
+                    const r = word.start.row + i; const c = word.start.col;
+                    if (!gridData[r][c]) gridData[r][c] = {};
+                    gridData[r][c].down = word.number;
+                }
+                gridData[word.start.row][word.start.col].startOfDown = word.number;
+            });
+            generateGrid();
+            generateClues();
+            addEventListeners();
+        }
+
+        function generateGrid() {
+            puzzleGrid.innerHTML = '';
+            for (let r = 0; r < GRID_ROWS; r++) {
+                for (let c = 0; c < GRID_COLS; c++) {
+                    const cellData = gridData[r][c];
+                    const cell = document.createElement('div');
+                    if (cellData) {
+                        cell.className = 'cell';
+                        const numberSpan = document.createElement('span');
+                        numberSpan.className = 'cell-number';
+                        const clueNumber = cellData.startOfAcross || cellData.startOfDown;
+                        if(clueNumber) numberSpan.textContent = clueNumber;
+                        cell.appendChild(numberSpan);
+                        const input = document.createElement('input');
+                        input.type = 'text'; input.maxLength = 1;
+                        input.dataset.row = r; input.dataset.col = c;
+                        cell.appendChild(input);
+                    } else {
+                        cell.className = 'blank';
+                    }
+                    puzzleGrid.appendChild(cell);
+                }
+            }
+        }
+        
+        function generateClues() {
+            clues.across.forEach(c => {
+                const clueDiv = document.createElement('div');
+                clueDiv.className = 'clue p-2 text-sm';
+                clueDiv.textContent = `${c.number}. ${c.clue}`;
+                clueDiv.dataset.number = c.number; clueDiv.dataset.direction = 'across';
+                acrossCluesContainer.appendChild(clueDiv);
+            });
+            clues.down.forEach(c => {
+                const clueDiv = document.createElement('div');
+                clueDiv.className = 'clue p-2 text-sm';
+                clueDiv.textContent = `${c.number}. ${c.clue}`;
+                clueDiv.dataset.number = c.number; clueDiv.dataset.direction = 'down';
+                downCluesContainer.appendChild(clueDiv);
+            });
+        }
+        
+        function clearAnswerStyles() {
+            puzzleGrid.querySelectorAll('input').forEach(input => {
+                input.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        function addEventListeners() {
+            puzzleGrid.addEventListener('focusin', (e) => {
+                if (e.target.tagName !== 'INPUT') return;
+                clearAnswerStyles();
+                const { row, col } = e.target.dataset;
+                const cellData = gridData[row][col];
+                const currentCell = e.target;
+                if (currentCell === lastFocusedCell && cellData.across && cellData.down) {
+                    activeDirection = activeDirection === 'across' ? 'down' : 'across';
+                } else {
+                    if (!cellData[activeDirection]) {
+                        activeDirection = cellData.across ? 'across' : 'down';
+                    }
+                }
+                const clueNumber = cellData[activeDirection];
+                highlight(clueNumber, activeDirection);
+                lastFocusedCell = currentCell;
+            });
+
+            puzzleGrid.addEventListener('input', (e) => {
+                if (e.target.tagName !== 'INPUT') return;
+                clearAnswerStyles();
+                const { row, col } = e.target.dataset;
+                const cellData = gridData[row][col];
+                if (cellData && cellData[activeDirection]) {
+                    checkWordCompletion(cellData[activeDirection], activeDirection);
+                }
+                if (e.target.value) {
+                    let nextInput;
+                    if (activeDirection === 'across') {
+                        nextInput = puzzleGrid.querySelector(`input[data-row="${row}"][data-col="${parseInt(col) + 1}"]`);
+                    } else {
+                        nextInput = puzzleGrid.querySelector(`input[data-row="${parseInt(row) + 1}"][data-col="${col}"]`);
+                    }
+                    if (nextInput) nextInput.focus();
+                }
+            });
+
+            puzzleGrid.addEventListener('keydown', (e) => {
+                if (e.target.tagName !== 'INPUT') return;
+                const { row, col } = e.target.dataset;
+                let r = parseInt(row), c = parseInt(col);
+                let targetInput;
+                if (e.key === 'Backspace' && e.target.value === '') {
+                    if (activeDirection === 'across') { targetInput = puzzleGrid.querySelector(`input[data-row="${r}"][data-col="${c - 1}"]`); } 
+                    else { targetInput = puzzleGrid.querySelector(`input[data-row="${r - 1}"][data-col="${c}"]`); }
+                } else if (e.key === 'ArrowUp') { targetInput = puzzleGrid.querySelector(`input[data-row="${r - 1}"][data-col="${c}"]`);
+                } else if (e.key === 'ArrowDown') { targetInput = puzzleGrid.querySelector(`input[data-row="${r + 1}"][data-col="${c}"]`);
+                } else if (e.key === 'ArrowLeft') { targetInput = puzzleGrid.querySelector(`input[data-row="${r}"][data-col="${c - 1}"]`);
+                } else if (e.key === 'ArrowRight') { targetInput = puzzleGrid.querySelector(`input[data-row="${r}"][data-col="${c + 1}"]`);
+                }
+                if (targetInput) { e.preventDefault(); targetInput.focus(); }
+            });
+
+            document.querySelectorAll('.clue').forEach(clueEl => {
+                clueEl.addEventListener('click', (e) => {
+                    const { number, direction } = e.currentTarget.dataset;
+                    activeDirection = direction; 
+                    highlight(number, direction);
+                    const word = clues[direction].find(w => w.number == number);
+                    const startCellInput = puzzleGrid.querySelector(`input[data-row="${word.start.row}"][data-col="${word.start.col}"]`);
+                    if(startCellInput) startCellInput.focus();
+                });
+            });
+
+            clearButton.addEventListener('click', () => {
+                puzzleGrid.querySelectorAll('input').forEach(input => input.value = '');
+                clearHighlights();
+                clearAnswerStyles();
+                lastFocusedCell = null;
+                solvedWords.clear();
+            });
+
+            checkButton.addEventListener('click', () => {
+                clearHighlights();
+                let mistakeFound = false;
+                puzzleGrid.querySelectorAll('input').forEach(input => {
+                    const { row, col } = input.dataset;
+                    const r = parseInt(row); const c = parseInt(col);
+                    const cellData = gridData[r][c];
+                    if (!cellData) return;
+                    if (input.value === '') { input.classList.remove('correct', 'incorrect'); return; }
+                    let isCorrectInAcross = !cellData.across;
+                    let isCorrectInDown = !cellData.down;
+                    if (cellData.across) {
+                        const wordInfo = clues.across.find(w => w.number === cellData.across);
+                        const answer = solutions.across[cellData.across];
+                        const letterIndex = c - wordInfo.start.col;
+                        isCorrectInAcross = (answer && letterIndex < answer.length && answer[letterIndex].toUpperCase() === input.value.toUpperCase());
+                    }
+                    if (cellData.down) {
+                        const wordInfo = clues.down.find(w => w.number === cellData.down);
+                        const answer = solutions.down[cellData.down];
+                        const letterIndex = r - wordInfo.start.row;
+                        isCorrectInDown = (answer && letterIndex < answer.length && answer[letterIndex].toUpperCase() === input.value.toUpperCase());
+                    }
+                    const isCorrect = isCorrectInAcross && isCorrectInDown;
+                    input.classList.toggle('correct', isCorrect);
+                    input.classList.toggle('incorrect', !isCorrect);
+                    
+                    if (!isCorrect) {
+                        mistakeFound = true;
+                    }
+                });
+                
+                if (mistakeFound) {
+                    triggerMistakeBird();
+                }
+            });
+
+            revealButton.addEventListener('click', () => {
+                clearHighlights();
+                clearAnswerStyles();
+                solvedWords.clear();
+                clues.across.forEach(word => {
+                    const answer = solutions.across[word.number];
+                    if (!answer) return;
+                    for (let i = 0; i < word.length; i++) {
+                        const input = puzzleGrid.querySelector(`input[data-row="${word.start.row}"][data-col="${word.start.col + i}"]`);
+                        if(input && answer[i]) input.value = answer[i].toUpperCase();
+                    }
+                    checkWordCompletion(word.number, 'across');
+                });
+                 clues.down.forEach(word => {
+                    const answer = solutions.down[word.number];
+                    if (!answer) return;
+                    for (let i = 0; i < word.length; i++) {
+                        const input = puzzleGrid.querySelector(`input[data-row="${word.start.row + i}"][data-col="${word.start.col}"]`);
+                        if(input && answer[i]) input.value = answer[i].toUpperCase();
+                    }
+                    checkWordCompletion(word.number, 'down');
+                });
+            });
+        }
+        
+        function highlight(number, direction) {
+            clearHighlights();
+            const word = clues[direction].find(w => w.number == number);
+            if (!word) return;
+            for (let i = 0; i < word.length; i++) {
+                let r, c;
+                if (direction === 'across') { r = word.start.row; c = word.start.col + i; } 
+                else { r = word.start.row + i; c = word.start.col; }
+                const input = puzzleGrid.querySelector(`input[data-row="${r}"][data-col="${c}"]`);
+                if (input) input.parentElement.classList.add('highlight');
+            }
+            const clueEl = document.querySelector(`.clue[data-number="${number}"][data-direction="${direction}"]`);
+            if (clueEl) clueEl.classList.add('clue-highlight');
+        }
+
+        function clearHighlights() {
+            document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+            document.querySelectorAll('.clue-highlight').forEach(el => el.classList.remove('clue-highlight'));
+            puzzleGrid.querySelectorAll('input').forEach(input => input.parentElement.classList.remove('highlight'));
+        }
+
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+</html>
