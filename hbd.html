@@ -22,12 +22,12 @@
         #puzzle-grid {
             display: grid;
             grid-template-columns: repeat(20, 1fr);
-            grid-template-rows: repeat(30, 1fr);
+            grid-template-rows: repeat(40, 1fr);
             gap: 1px;
             border: 4px solid #d1c4e9;
             width: 100%;
             max-width: 500px;
-            aspect-ratio: 20 / 30;
+            aspect-ratio: 20 / 40;
             background-color: #d1c4e9;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             border-radius: 8px;
@@ -204,15 +204,15 @@
             left: 0;
             transform: translateX(-150px);
             z-index: 10000;
-            animation: flyAcross 5s linear forwards;
+            animation: flyAcross 30s linear forwards;
             pointer-events: none;
             width: 80px;
             height: 80px;
         }
         .mistake-bird {
             position: absolute;
-            width: 70px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
             top: 0;
             left: 0;
             /* --- UPDATED BIRD URL --- */
@@ -223,8 +223,8 @@
         }
         .bird-poop {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 80px;
+            height: 80px;
             left: 20px;
             top: 50px;
             /* --- UPDATED POOP URL --- */
@@ -238,11 +238,11 @@
         }
         @keyframes flyAcross {
             from { transform: translateX(-150px); }
-            to { transform: translateX(110vw); }
+            to { transform: translateX(1000vw); }
         }
         @keyframes dropPoop {
             0% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 1; transform: translateY(100vh); }
+            100% { opacity: 1; transform: translateY(50vh); }
         }
     </style>
 </head>
@@ -283,38 +283,41 @@
     </div>
 
     <script>
-        const GRID_ROWS = 30;
+        const GRID_ROWS = 40;
         const GRID_COLS = 20;
         const clues = { 
             across: [
-                { number: 3, clue: "Month of our anniversary, one word.", start: { row: 1, col: 3 }, length: 4 },
-                { number: 5, clue: "*Not* the country of origin of Kristy's grandpa, but Max sometimes thinks it is.", start: { row: 4, col: 5 }, length: 8 },
-                { number: 8, clue: "Kristy's favorite cocktail.", start: { row: 9, col: 7 }, length: 12 },
-                { number: 14, clue: "Your go-to local park when the bikes are calling.", start: { row: 15, col: 13 }, length: 9 },
-                { number: 15, clue: "Type of coordination behind Kristy's killer serves.", start: { row: 16, col: 2 }, length: 7 },
-                { number: 16, clue: "*Name* of the kilted Scottish highland warrior, the mascot of Carlmont High School.", start: { row: 18, col: 0 }, length: 9 },
-                { number: 18, clue: "Documentary that Kristy rewatched countless times (without \"the\").", start: { row: 20, col: 8 }, length: 8 },
-                { number: 20, clue: "Favorite type of coffee.", start: { row: 23, col: 3 }, length: 7 },
-                { number: 21, clue: "Name of one of Kristy's dogs.", start: { row: 26, col: 6 }, length: 5 }
+                { number: 3, clue: "Month of our anniversary.", start: { row: 2, col: 3 }, length: 4 },
+				{ number: 22, clue: "Name of out first RV.", start: { row: 1, col: 8 }, length: 10 },
+                { number: 5, clue: "*Not* the country of origin of Kristy's grandpa, but Max sometimes thinks it is.", start: { row: 5, col: 5 }, length: 8 },
+                { number: 8, clue: "Kristy's favorite cocktail.", start: { row: 10, col: 7 }, length: 12 },
+                { number: 14, clue: "Your go-to local park when the bikes are calling.", start: { row: 16, col: 13 }, length: 9 },
+                { number: 15, clue: "Type of coordination behind Kristy's killer serves.", start: { row: 17, col: 2 }, length: 7 },
+                { number: 16, clue: "*Name* of the kilted Scottish highland warrior, the mascot of Carlmont High School.", start: { row: 19, col: 0 }, length: 9 },
+                { number: 18, clue: "Documentary that Kristy rewatched countless times (without \"the\").", start: { row: 21, col: 8 }, length: 8 },
+                { number: 20, clue: "Favorite type of coffee.", start: { row: 24, col: 3 }, length: 7 },
+                { number: 21, clue: "Name of one of Kristy's dogs.", start: { row: 27, col: 6 }, length: 5 }
             ],
             down: [
-                { number: 1, clue: "Name of the *other* street that San Carlos house is located on (not bay view).", start: { row: 0, col: 5 }, length: 7 },
-                { number: 2, clue: "Food Kristy refuses to eat.", start: { row: 0, col: 9 }, length: 6 },
-                { number: 4, clue: "Favorite song of Kristy's teens by Dashboard Confessional:.", start: { row: 3, col: 11 }, length: 10 },
-                { number: 6, clue: "Favorite comfort food.", start: { row: 7, col: 14 }, length: 14 },
-                { number: 7, clue: "Name of one of Kristy's dogs.", start: { row: 7, col: 16 }, length: 6 },
-                { number: 9, clue: "Your most common modern-day \"emergency\".", start: { row: 9, col: 8 }, length: 10 },
-                { number: 10, clue: "The color that dominates your wardrobe.", start: { row: 11, col: 6 }, length: 6 },
-                { number: 11, clue: "Last name of Kristy favorite podcaster.", start: { row: 13, col: 18 }, length: 5 },
-                { number: 12, clue: "Country of origin of Kristy's grandpa", start: { row: 14, col: 11 }, length: 8 },
-                { number: 13, clue: "The park where our paths first crossed.", start: { row: 15, col: 0 }, length: 7 },
-                { number: 17, clue: "\"Do not disturb\" time of the day.", start: { row: 18, col: 4 }, length: 7 },
-                { number: 19, clue: "Name of one of Kristy's dogs.", start: { row: 22, col: 7 }, length: 6 }
+				{ number: 24, clue: "How to say sock in russian.", start: { row: 0, col: 14 }, length: 6 },
+                { number: 1, clue: "Name of the *other* street that San Carlos house is located on (not bay view).", start: { row: 1, col: 5 }, length: 7 },
+                { number: 2, clue: "Food Kristy refuses to eat.", start: { row: 1, col: 9 }, length: 6 },
+                { number: 4, clue: "Favorite song of Kristy's teens by Dashboard Confessional:.", start: { row: 4, col: 11 }, length: 10 },
+                { number: 6, clue: "Favorite comfort food.", start: { row: 8, col: 14 }, length: 14 },
+                { number: 7, clue: "Name of one of Kristy's dogs.", start: { row: 8, col: 16 }, length: 6 },
+                { number: 9, clue: "Your most common modern-day \"emergency\".", start: { row: 10, col: 8 }, length: 10 },
+                { number: 10, clue: "The color that dominates your wardrobe.", start: { row: 12, col: 6 }, length: 6 },
+                { number: 11, clue: "Last name of Kristy favorite podcaster.", start: { row: 14, col: 18 }, length: 5 },
+                { number: 12, clue: "Country of origin of Kristy's grandpa", start: { row: 15, col: 11 }, length: 8 },
+                { number: 13, clue: "The park where our paths first crossed.", start: { row: 16, col: 0 }, length: 7 },
+                { number: 17, clue: "\"Do not disturb\" time of the day.", start: { row: 19, col: 4 }, length: 7 },
+                { number: 19, clue: "Name of one of Kristy's dogs.", start: { row: 23, col: 7 }, length: 6 },
+				{ number: 23, clue: "A sound that Kristy can make sometimes.", start: { row: 24, col: 9 }, length: 4 },
             ]
         };
         const solutions = {
-            across: { "3": "JULY", "5": "SLOVENIA", "8": "OLDFASHIONED", "14": "HUDDART", "15": "HANDEYE", "16": "CARLMONTY", "18": "ALPINIST", "20": "INSTANT", "21": "WISTA" },
-            down: { "1": "BLOSSOM", "2": "OLIVES", "4": "VINDICATED", "6": "CHICKENNUGGETS", "7": "GINGER", "9": "LOWBATTERY", "10": "PURPLE", "11": "PERIL", "12": "SLOVAKIA", "13": "PRECITA", "17": "MORNING", "19": "CASSIE" }
+            across: { "3": "JULY", "5": "SLOVENIA", "8": "OLDFASHIONED", "14": "HUDDART", "15": "HANDEYE", "16": "CARLMONTY", "18": "ALPINIST", "20": "INSTANT", "21": "WISTA", "22": "HOLLYMOLLY"},
+            down: { "1": "BLOSSOM", "2": "OLIVES", "4": "VINDICATED", "6": "CHICKENNUGGETS", "7": "GINGER", "9": "LOWBATTERY", "10": "PURPLE", "11": "PERIL", "12": "SLOVAKIA", "13": "PRECITA", "17": "MORNING", "19": "CASSIE", "23": "TOOT", "24": "NOSOCK" }
         };
 
         const puzzleGrid = document.getElementById('puzzle-grid');
